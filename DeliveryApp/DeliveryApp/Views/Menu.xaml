@@ -1,15 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DeliveryApp.Views.Menu">
-    <ContentPage.Content>
-        <StackLayout>
-            <Frame BackgroundColor="Gold">
-                <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            </Frame>
-            
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:DeliveryApp"
+             mc:Ignorable="d"
+             x:Class="DeliveryApp.Views.Menu"
+            BarBackgroundColor="Blue"
+            BarTextColor="White"
+            SelectedTabColor="Red"
+            UnselectedTabColor="Black"
+            xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
+            windows:TabbedPage.HeaderIconsEnabled="true">
+    <windows:TabbedPage.HeaderIconsSize>
+        <Size>
+            <x:Arguments>
+                <x:Double>48</x:Double>
+                <x:Double>48</x:Double>
+            </x:Arguments>
+        </Size>
+    </windows:TabbedPage.HeaderIconsSize>
+    
+
+</TabbedPage>
