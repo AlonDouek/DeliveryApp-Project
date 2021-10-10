@@ -4,7 +4,7 @@
              x:Class="DeliveryApp.Views.UserPage">
     <ContentPage.Content>
         <StackLayout>
-            <Image Source="{}"></Image>
+            <Image Source="{}"></Image> 
             <Label Text="Welcome to user Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
