@@ -21,7 +21,7 @@ namespace DeliveryApp
         {
             InitializeComponent();
             CurrentUser = null;
-            MainPage = new MainPage();
+            MainPage = new NavigationPage();//MainPage();
         }
         
         protected override void OnStart()

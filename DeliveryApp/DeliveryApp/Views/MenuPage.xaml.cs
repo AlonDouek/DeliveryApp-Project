@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
-namespace DeliveryApp
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using DeliveryApp;
+
+namespace DeliveryApp.Views
 {
-    public partial class MainPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MenuPage : TabbedPage
     {
-        public MainPage()
+        public MenuPage()
         {
             InitializeComponent();
         }
-        
     }
 }

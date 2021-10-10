@@ -8,8 +8,8 @@
             <Label Text="Welcome to cool food delivery app!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
 
-        <Button Text="Order Without logging in"></Button>
-        <Button Text="Log in" Clicked="Button_Clicked"></Button>
+        <Button x:Name="TempLogInBtn" Text="Order Without logging in"></Button>
+        <Button x:Name="LogInBtn" Text="Log in" Clicked="Button_Clicked"></Button>
     </StackLayout>
 
 </ContentPage>
