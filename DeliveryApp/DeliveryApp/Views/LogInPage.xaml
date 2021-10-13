@@ -4,9 +4,12 @@
              x:Class="DeliveryApp.Views.LogInPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome log in to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame BackgroundColor="AliceBlue">
+                <Label Text="Welcome log in to Xamarin.Forms!" />
+            </Frame>
+            <Frame BackgroundColor="AntiqueWhite">
+                <Entry BackgroundColor="AntiqueWhite" Placeholder="Enter your email" Text="{Binding Email}" ></Entry>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

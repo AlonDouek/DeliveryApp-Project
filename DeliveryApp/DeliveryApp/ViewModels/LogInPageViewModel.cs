@@ -16,5 +16,30 @@ namespace DeliveryApp.ViewModels
         }
         #endregion
 
+
+        private string email;
+        public string Email
+        {
+            get { return email; }
+            set
+            {
+                email = value;
+                OnPropertyChanged("Email");
+            }
+        }
+
+        private string password;
+
+        public string Password
+        {
+            get { return password; }
+
+            set
+            {
+                password = value;
+                OnPropertyChanged("Password");
+            }
+        }
+
     }
 }

@@ -26,7 +26,7 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("Email");
             }
         }
-        
+
         private string username;
         public string Username
         {
