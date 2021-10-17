@@ -4,12 +4,19 @@
              x:Class="DeliveryApp.Views.LogInPage">
     <ContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="AliceBlue">
-                <Label Text="Welcome log in to Xamarin.Forms!" />
-            </Frame>
-            <Frame BackgroundColor="AntiqueWhite">
+            <Grid BackgroundColor="Ivory">
+                <Frame BackgroundColor="AliceBlue" Grid.Column="0" Grid.Row="0">
+                    <Label Text="Welcome log in to Xamarin.Forms!" />
+                </Frame>
+                
+                <Frame BackgroundColor="AntiqueWhite" Grid.Column="0" Grid.Row="1">
                 <Entry BackgroundColor="AntiqueWhite" Placeholder="Enter your email" Text="{Binding Email}" ></Entry>
-            </Frame>
+               
+                </Frame>
+
+                <Button Text="forgot password?" x:Name="forpass"></Button>
+                <Button Text="Submit" x:Name="SUBMIT"></Button>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

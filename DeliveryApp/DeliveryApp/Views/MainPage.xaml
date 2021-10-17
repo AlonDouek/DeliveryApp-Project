@@ -9,7 +9,7 @@
         </Frame>
 
         <!--<Button x:Name="TempLogInBtn" Text="Order Without logging in" Clicked="TempLogInBtn_clicked"></Button>-->
-        <Button x:Name="LogInBtn" Text="Log in" Clicked="LogInbtn_clicked"></Button>
+        <Button x:Name="LogInBtn" Text="Log in" ></Button> <!--//Clicked="LogInbtn_clicked"-->
         <Button x:Name="SignUpBtn" Text="Sign Up"></Button>
     </StackLayout>
 
