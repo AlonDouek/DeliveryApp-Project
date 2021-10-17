@@ -53,13 +53,13 @@ namespace DeliveryApp.ViewModels
 
         public async void OnSubmit()
         {
-            await App.Current.MainPage.Navigation.PushModalAsync(new Views.UserPage(this));
+            await App.Current.MainPage.Navigation.PushModalAsync(new Views.UserPage());
             DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
             User user = await proxy.LoginAsync(Email, Password);
             if (user == null)
             {
                 
-                await App.Current.MainPage.DisplayAlert("שגיאה", "התחברות נכשלה, בדוק שם משתמש וסיסמה ונסה שוב", "בסדר");
+                await App.Current.MainPage.DisplayAlert("error", "Log In failed please try again", "ok");
             }
             else
             {
