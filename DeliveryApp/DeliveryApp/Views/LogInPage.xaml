@@ -9,16 +9,22 @@
             </Frame>
             <Grid BackgroundColor="Ivory">
 
+                
+
                 <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="0" TextColor="Gray"></Label>
-                <Frame CornerRadius="6" BackgroundColor="AntiqueWhite" Grid.Column="0" Grid.Row="1">
-                    <Entry FontSize="Medium" BackgroundColor="AntiqueWhite" Placeholder="Enter your email" Text="{Binding Email}" ></Entry>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="1">
+                    <Entry FontSize="Medium" Text="{Binding Email}" BackgroundColor="AntiqueWhite" Placeholder="Enter your email" ></Entry>
                 </Frame>
 
                 <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="2" TextColor="Gray"></Label>
-                <Frame CornerRadius="6" BackgroundColor="AntiqueWhite" Grid.Column="0" Grid.Row="3">
-                    <Entry FontSize="Medium" IsPassword="True" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password" Text="{Binding Password}" ></Entry>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="3">
+                    <Entry FontSize="Medium" IsPassword="True" Text="{Binding Password}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password"></Entry>
                 </Frame>
-                <Button Text="forgot password?" x:Name="forpass"></Button>
+                
+                
+                
+                
+                <Button Text="forgot password?" x:Name="forpass"></Button> <!--do this in some other time bruv-->
                 <Button Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
             </Grid>
         </StackLayout>

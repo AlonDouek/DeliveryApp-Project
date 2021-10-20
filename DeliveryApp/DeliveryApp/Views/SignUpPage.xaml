@@ -4,9 +4,41 @@
              x:Class="DeliveryApp.Views.SignUpPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome sign up to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame BackgroundColor="AliceBlue" >
+                <Label FontSize="Caption" Text="Sign Up" />
+            </Frame>
+            <Grid BackgroundColor="Ivory">
+
+                <Label FontSize="Small" Text="First name" Grid.Column="0" Grid.Row="0" TextColor="Gray"></Label>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="1">
+                    <Entry FontSize="Medium" Text="{Binding FirstName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your First name" ></Entry>
+                </Frame>
+
+                <Label FontSize="Small" Text="Last name" Grid.Column="0" Grid.Row="2" TextColor="Gray"></Label>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="3">
+                    <Entry FontSize="Medium" Text="{Binding LastName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Last name" ></Entry>
+                </Frame>
+
+                <Label FontSize="Small" Text="Enter your address" Grid.Column="0" Grid.Row="4" TextColor="Gray"></Label>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="5">
+                    <Entry FontSize="Medium" Text="{Binding Address}" BackgroundColor="AntiqueWhite" Placeholder="Enter your address" ></Entry>
+                </Frame>
+
+                
+                <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="6" TextColor="Gray"></Label>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="7">
+                    <Entry FontSize="Medium" BackgroundColor="AntiqueWhite" Placeholder="Enter your email" Text="{Binding Email}" ></Entry>
+                </Frame>
+
+                <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="8" TextColor="Gray"></Label>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="9">
+                    <Entry FontSize="Medium" IsPassword="True" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password" Text="{Binding Password}" ></Entry>
+                </Frame>
+
+                <!--Add later insertion of payment information when you figure out how u want to do it-->
+
+                <Button Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
