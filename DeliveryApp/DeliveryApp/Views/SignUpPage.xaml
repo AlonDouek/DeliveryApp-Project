@@ -49,7 +49,7 @@
                     <Entry FontSize="Medium" Text="{Binding LastName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Last name" ></Entry>
                 </Frame>
 
-                
+                <!--ADD PHONE NUMBER I FORGOT AAHHHHH!!-->
                 
                 
                 <Grid>

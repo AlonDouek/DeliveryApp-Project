@@ -19,8 +19,31 @@ namespace DeliveryApp.ViewModels
         }
         #endregion
 
+        #region FILL ERROR
+        //ADD THE THINGS THAT NEED TO BE ADDED
+        private string fillError;
+        public string FillError
+        {
+            get { return fillError; }
+            set
+            {
+                fillError = value;
+                OnPropertyChanged("FillError");
+            }
+        }
+        private bool showFillError;
 
+        public bool ShowFillError
+        {
+            get => showFillError;
+            set
+            {
+                showFillError = value;
+                OnPropertyChanged("ShowFillError");
+            }
+        }
 
+        #endregion
         private string email;
         public string Email
         {
@@ -95,7 +118,7 @@ namespace DeliveryApp.ViewModels
         //        OnPropertyChanged("PaFo");
         //    }
         //}
-
+        
         public ICommand SubmitCommand { protected set; get; }
 
         public SignUpPageViewModel()
