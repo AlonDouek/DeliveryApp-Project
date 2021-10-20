@@ -8,7 +8,16 @@
                 <Label FontSize="Caption" Text="Sign Up" />
             </Frame>
             <Grid BackgroundColor="Ivory">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Text="{Binding FillError}" IsVisible="{Binding ShowFillError}" Grid.Column="1" />
                 
+                <!--maybe not need for last/first name-->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
