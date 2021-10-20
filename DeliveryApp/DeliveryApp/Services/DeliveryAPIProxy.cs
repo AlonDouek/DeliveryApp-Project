@@ -98,11 +98,13 @@ namespace DeliveryApp.Services
                 return null;
             }
         }
-        public async Task<string> TestAsync()
+
+        //change when know how cause im no sure
+        public async Task<User> SignUpAsync(string email, string pass)
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Test");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/SignUp");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
@@ -111,8 +113,8 @@ namespace DeliveryApp.Services
                         PropertyNameCaseInsensitive = true
                     };
                     string content = await response.Content.ReadAsStringAsync();
-                    string s = JsonSerializer.Deserialize<string>(content, options);
-                    return s;
+                    User u = JsonSerializer.Deserialize<User>(content, options);
+                    return u;
                 }
                 else
                 {
@@ -125,7 +127,5 @@ namespace DeliveryApp.Services
                 return null;
             }
         }
-
-
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DeliveryApp.Models;
+using DeliveryApp.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -99,6 +101,27 @@ namespace DeliveryApp.ViewModels
         public SignUpPageViewModel()
         {
             SubmitCommand = new Command(OnSubmit);
+        }
+        public async void OnSubmit()
+        {
+            await App.Current.MainPage.Navigation.PushModalAsync(new Views.UserPage());
+            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+            User user = await proxy.LoginAsync(Email, Password);
+            if (user == null)
+            {
+
+                await App.Current.MainPage.DisplayAlert("error", "Log In failed please try again", "ok");
+            }
+            else
+            {
+                App theApp = (App)App.Current;
+                theApp.CurrentUser = user;
+
+                Page p = new NavigationPage(new Views.UserPage());
+                App.Current.MainPage = p;
+
+                //d
+            }
         }
     }
 }
