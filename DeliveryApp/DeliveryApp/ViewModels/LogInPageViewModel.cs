@@ -69,7 +69,7 @@ namespace DeliveryApp.ViewModels
                 Page p = new NavigationPage(new Views.UserPage());
                 App.Current.MainPage = p;
                 
-
+                //d
             }
         }
 
