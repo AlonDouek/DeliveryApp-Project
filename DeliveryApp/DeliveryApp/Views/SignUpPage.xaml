@@ -99,7 +99,7 @@
 
                 <!--Add later insertion of payment information when you figure out how u want to do it-->
 
-                <Button Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
+                <Button BackgroundColor="#29C529" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
