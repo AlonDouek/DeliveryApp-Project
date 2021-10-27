@@ -16,7 +16,17 @@
                     <Entry FontSize="Medium" Text="{Binding Email}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Email" ></Entry>
                 </Frame>
 
-                <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="2" TextColor="Gray"></Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label FontSize="Small" Text="Password" Grid.Column="0" TextColor="Gray"/>
+                    <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" Grid.Column="1" />
+                </Grid>
                 <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="3">
                     <Entry FontSize="Medium" IsPassword="True" Text="{Binding Password}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password"></Entry>
                 </Frame>

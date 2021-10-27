@@ -44,11 +44,38 @@ namespace DeliveryApp.ViewModels
             }
         }
 
+        private string passwordError;
+
+        public string PasswordError
+        {
+            get => passwordError;
+            set
+            {
+                passwordError = value;
+                OnPropertyChanged("passwordError");
+            }
+        }
+
+        private bool showPasswordError;
+
+        public bool ShowPasswordError
+        {
+            get => showPasswordError;
+            set
+            {
+                showPasswordError = value;
+                OnPropertyChanged("ShowPasswordError");
+            }
+        }
+
+
         public ICommand SubmitCommand { protected set; get; }
 
         public LogInPageViewModel()
         {
             SubmitCommand = new Command(OnSubmit);
+            PasswordError = "password must be between 5-30 character";
+            showPasswordError = false;           
         }
 
         public async void OnSubmit()
