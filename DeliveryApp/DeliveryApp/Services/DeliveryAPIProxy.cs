@@ -100,21 +100,20 @@ namespace DeliveryApp.Services
         }
 
         //change when know how cause im no sure
-        public async Task<User> SignUpAsync(string email, string pass)
+        public async Task<User> SignUpAsync(string firstName, string lastName, string email, DateTime birthDate, string username, string pswd)
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/SignUp");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/register?firstName={firstName}&lastName={lastName}&email={email}&dt={birthDate}&username={username}&password={pswd}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
                     {
-                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
                         PropertyNameCaseInsensitive = true
                     };
                     string content = await response.Content.ReadAsStringAsync();
-                    User u = JsonSerializer.Deserialize<User>(content, options);
-                    return u;
+                    User p = JsonSerializer.Deserialize<User>(content, options);
+                    return p;
                 }
                 else
                 {
@@ -129,3 +128,4 @@ namespace DeliveryApp.Services
         }
     }
 }
+//dibbler -=for desigen
