@@ -74,7 +74,7 @@ namespace DeliveryApp.ViewModels
         public LogInPageViewModel()
         {
             SubmitCommand = new Command(OnSubmit);
-            PasswordError = "password must be between 5-30 character";
+            PasswordError = "password must be between 5-30 character!";
             showPasswordError = false;           
         }
 
