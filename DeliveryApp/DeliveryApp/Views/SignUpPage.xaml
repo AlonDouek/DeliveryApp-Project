@@ -18,33 +18,14 @@
                 <Label Text="{Binding FillError}" IsVisible="{Binding ShowFillError}" Grid.Column="1" />
                 
                 <!--maybe not need for last/first name-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Label Text="First Name" Grid.Column="0" TextColor="Gray" FontSize="Small"  />
-                    <Label Text="{Binding FNameError}" IsVisible="{Binding ShowFNameError}" Grid.Column="1" />
-                </Grid>
+
+                <Label Text="First Name" Grid.Column="0" TextColor="Gray" FontSize="Small"  />
                 <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
                     <Entry FontSize="Medium" Text="{Binding FirstName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your First name" ></Entry>
                 </Frame>
 
-                <Label ></Label>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Label FontSize="Small" Text="Last name" Grid.Column="0" TextColor="Gray" />
-                    <Label Text="{Binding LNameError}" IsVisible="{Binding ShowLNameError}" Grid.Column="1" />
-                </Grid>
+
+                <Label FontSize="Small" Text="Last name" Grid.Column="0" TextColor="Gray" />
                 <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
                     <Entry FontSize="Medium" Text="{Binding LastName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Last name" ></Entry>
                 </Frame>
@@ -52,17 +33,8 @@
                 <!--ADD PHONE NUMBER I FORGOT AAHHHHH!!-->
                 
                 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Label  FontSize="Small" Text="Enter your address" Grid.Column="0" TextColor="Gray"/>
-                    <Label Text="{Binding AddresError}" IsVisible="{Binding ShowAddresError}" Grid.Column="1" />
-                </Grid>
+               
+                <Label  FontSize="Small" Text="Enter your address" Grid.Column="0" TextColor="Gray"/>
                 <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
                     <Entry FontSize="Medium" Text="{Binding Address}" BackgroundColor="AntiqueWhite" Placeholder="Enter your address" ></Entry>
                 </Frame>
