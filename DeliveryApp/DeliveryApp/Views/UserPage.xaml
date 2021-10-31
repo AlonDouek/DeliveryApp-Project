@@ -38,7 +38,7 @@
 
 
 
-            <Button Text="change credentials" Command="{}"></Button>
+            <Button Text="change credentials" Command="{Binding ChangeCredentialCommand}"></Button>
 
 
 
