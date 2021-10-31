@@ -102,6 +102,18 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("Address");
             }
         }
+        private string phoneNumber;
+
+        public string PhoneNumber
+        {
+            get { return phoneNumber; }
+
+            set
+            {
+                phoneNumber = value;
+                OnPropertyChanged("PhoneNumber");
+            }
+        }
 
 
         //still not 100% sure if i do this might remove later think about it
@@ -118,7 +130,7 @@ namespace DeliveryApp.ViewModels
         //        OnPropertyChanged("PaFo");
         //    }
         //}
-        
+
         public ICommand SubmitCommand { protected set; get; }
 
         public SignUpPageViewModel()

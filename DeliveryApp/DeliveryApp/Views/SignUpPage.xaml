@@ -31,9 +31,24 @@
                 </Frame>
 
                 <!--ADD PHONE NUMBER I FORGOT AAHHHHH!!-->
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label FontSize="Small" Text="Email" Grid.Column="0" TextColor="Gray"/>
+                    <Label Text="{Binding PhoneNumberError}" IsVisible="{Binding ShowPhoneNumberError}" Grid.Column="1" />
+                </Grid>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" >
+                    <Entry FontSize="Medium" BackgroundColor="AntiqueWhite" Placeholder="Enter your Phone Number" Text="{Binding PhoneNumber}" ></Entry>
+                </Frame>
                 
                 
-               
+
                 <Label  FontSize="Small" Text="Enter your address" Grid.Column="0" TextColor="Gray"/>
                 <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
                     <Entry FontSize="Medium" Text="{Binding Address}" BackgroundColor="AntiqueWhite" Placeholder="Enter your address" ></Entry>

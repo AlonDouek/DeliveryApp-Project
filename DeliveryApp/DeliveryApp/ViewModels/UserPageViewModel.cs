@@ -64,6 +64,18 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("FirstName");
             }
         }
+        private string phoneNumber;
+
+        public string PhoneNumber
+        {
+            get { return phoneNumber; }
+
+            set
+            {
+                phoneNumber = value;
+                OnPropertyChanged("PhoneNumber");
+            }
+        }
 
         private string address;
 
