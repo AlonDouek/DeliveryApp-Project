@@ -17,7 +17,7 @@
                 </Grid.RowDefinitions>
                 <Label Text="{Binding FillError}" IsVisible="{Binding ShowFillError}" Grid.Column="1" />
                 
-                <!--maybe not need for last/first name-->
+                
 
                 <Label Text="First Name" Grid.Column="0" TextColor="Gray" FontSize="Small"  />
                 <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">

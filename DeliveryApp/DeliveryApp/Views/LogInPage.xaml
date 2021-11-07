@@ -16,7 +16,7 @@
                     <Entry FontSize="Medium" Text="{Binding Email}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Email" ></Entry>
                 </Frame>
 
-                <Grid>
+                <Grid Grid.Column="0" Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -24,8 +24,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label FontSize="Small" Text="Password" Grid.Column="0" TextColor="Gray"/>
-                    <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" Grid.Column="1" />
+                    <Label FontSize="Small" Text="Password" Grid.Column="0" Grid.Row="0" TextColor="Gray"/>
+                    <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" Grid.Column="1" Grid.Row="0" />
                 </Grid>
                 <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="3">
                     <Entry FontSize="Medium" IsPassword="True" Text="{Binding Password}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password"></Entry>
@@ -33,12 +33,14 @@
                 
                 
                 
+              
+                <Button Grid.Column="0" Grid.Row="5"  BackgroundColor="#29C529" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
+                <!--do this in some other time bruv-->
+                <!--<Label Text="OR" FontSize="Large"  HorizontalOptions="Center" />-->
+                <!--<Button BackgroundColor="#DC0E0E" Text="forgot password?" x:Name="forpass"></Button> -->
+              
                 
-                
-                
-                <Button BackgroundColor="#DC0E0E" Text="forgot password?" x:Name="forpass"></Button> <!--do this in some other time bruv-->
-                <Label Text="OR" FontSize="Large"  HorizontalOptions="Center" />
-                <Button BackgroundColor="#29C529" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
+
             </Grid>
         </StackLayout>
     </ContentPage.Content>

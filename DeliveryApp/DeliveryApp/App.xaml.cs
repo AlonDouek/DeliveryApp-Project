@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using DeliveryApp.Views;
 
 namespace DeliveryApp
 {
@@ -21,7 +22,7 @@ namespace DeliveryApp
         {
             InitializeComponent();
             CurrentUser = null;
-            MainPage = new NavigationPage(MainPage);//MainPage();
+            MainPage = new NavigationPage(new SignUpPage());//MainPage();
         }
         
         protected override void OnStart()

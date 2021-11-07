@@ -80,7 +80,7 @@ namespace DeliveryApp.Services
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
                     {
-                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        ReferenceHandler = ReferenceHandler.Preserve,
                         PropertyNameCaseInsensitive = true
                     };
                     string content = await response.Content.ReadAsStringAsync();

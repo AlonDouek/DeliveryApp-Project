@@ -40,6 +40,7 @@ namespace DeliveryApp.ViewModels
             set
             {
                 password = value;
+                ValidatePassword(); 
                 OnPropertyChanged("Password");
             }
         }
@@ -52,7 +53,7 @@ namespace DeliveryApp.ViewModels
             set
             {
                 passwordError = value;
-                OnPropertyChanged("passwordError");
+                OnPropertyChanged("PasswordError");
             }
         }
 
@@ -68,35 +69,55 @@ namespace DeliveryApp.ViewModels
             }
         }
 
-
+        private void ValidatePassword()
+        {
+            if(!string.IsNullOrEmpty(Password))
+                this.ShowPasswordError = Password.Length > 5 && Password.Length < 30;
+        }
+       
         public ICommand SubmitCommand { protected set; get; }
 
         public LogInPageViewModel()
         {
             SubmitCommand = new Command(OnSubmit);
             PasswordError = "password must be between 5-30 character!";
-            showPasswordError = false;           
+            showPasswordError = false;
+            
         }
 
         public async void OnSubmit()
         {
-            await App.Current.MainPage.Navigation.PushModalAsync(new Views.UserPage());
-            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-            User user = await proxy.LoginAsync(Email, Password);
-            if (user == null)
+            if (Email != "" && Password != "")
             {
+                ValidatePassword();
+                if (ShowPasswordError)
+                {
+                    await App.Current.MainPage.DisplayAlert("error", "Password Must be between 5-30 characters", "ok");
+                }
+                else
+                {
+                    DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+                    User user = await proxy.LoginAsync(Email, Password);
+                    if (user != null)
+                    {
+                        App theApp = (App)App.Current;
+                        theApp.CurrentUser = user;
+
+                        Page p = new NavigationPage(new Views.UserPage());
+                        App.Current.MainPage = p;
+
+                    }
+                    else
+                    {
+                        await App.Current.MainPage.DisplayAlert("error", "User not Logged In", "ok");
+                    }
+                }
                 
-                await App.Current.MainPage.DisplayAlert("error", "Log In failed please try again", "ok");
             }
             else
             {
-                App theApp = (App)App.Current;
-                theApp.CurrentUser = user;
-                
-                Page p = new NavigationPage(new Views.UserPage());
-                App.Current.MainPage = p;
-                
-                //d
+                await App.Current.MainPage.DisplayAlert("error", "Log In failed! you must fill email and password", "ok");
+
             }
         }
 
