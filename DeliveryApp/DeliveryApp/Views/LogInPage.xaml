@@ -38,8 +38,9 @@
                 <!--do this in some other time bruv-->
                 <!--<Label Text="OR" FontSize="Large"  HorizontalOptions="Center" />-->
                 <!--<Button BackgroundColor="#DC0E0E" Text="forgot password?" x:Name="forpass"></Button> -->
-              
-                
+                <Button  Grid.Column="0" Grid.Row="6"  BackgroundColor="#29C529"  Text="Don't have an account? Sign up" Clicked="SignUp"/>
+
+
 
             </Grid>
         </StackLayout>
