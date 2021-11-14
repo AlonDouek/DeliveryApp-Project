@@ -4,90 +4,55 @@
              x:Class="DeliveryApp.Views.SignUpPage">
     <ContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="AliceBlue" >
-                <Label FontSize="Caption" Text="Sign Up" />
-            </Frame>
-            <Grid BackgroundColor="Ivory">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Label Text="{Binding FillError}" IsVisible="{Binding ShowFillError}" Grid.Column="1" />
-                
-                
+            <ScrollView>
+                <StackLayout>
+                    <Frame BackgroundColor="AliceBlue" >
+                        <Label FontSize="Caption" Text="Sign Up" />
+                    </Frame>
+                    <Grid BackgroundColor="Ivory">
 
-                <Label Text="First Name" Grid.Column="0" TextColor="Gray" FontSize="Small"  />
-                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                    <Entry FontSize="Medium" Text="{Binding FirstName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your First name" ></Entry>
-                </Frame>
+                        <Label Text="First Name" Grid.Column="0" Grid.Row="0" TextColor="Gray" FontSize="Small"  />
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="1" BackgroundColor="LightGoldenrodYellow">
+                            <Entry FontSize="Medium" Text="{Binding FirstName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your First name" ></Entry>
+                        </Frame>
 
 
-                <Label FontSize="Small" Text="Last name" Grid.Column="0" TextColor="Gray" />
-                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                    <Entry FontSize="Medium" Text="{Binding LastName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Last name" ></Entry>
-                </Frame>
+                        <Label FontSize="Small" Text="Last name" Grid.Column="0" Grid.Row="2" TextColor="Gray" />
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="3" BackgroundColor="LightGoldenrodYellow">
+                            <Entry FontSize="Medium" Text="{Binding LastName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Last name" ></Entry>
+                        </Frame>
 
-                <!--ADD PHONE NUMBER I FORGOT AAHHHHH!!-->
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Label FontSize="Small" Text="Email" Grid.Column="0" TextColor="Gray"/>
-                    <Label Text="{Binding PhoneNumberError}" IsVisible="{Binding ShowPhoneNumberError}" Grid.Column="1" />
-                </Grid>
-                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" >
-                    <Entry FontSize="Medium" BackgroundColor="AntiqueWhite" Placeholder="Enter your Phone Number" Text="{Binding PhoneNumber}" ></Entry>
-                </Frame>
-                
-                
+                        <Label FontSize="Small" Text="phoneNumber" Grid.Column="0" Grid.Row="4" TextColor="Gray"/>
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="5" BackgroundColor="LightGoldenrodYellow" >
+                            <Entry FontSize="Medium" BackgroundColor="AntiqueWhite" Placeholder="Enter your Phone Number" Text="{Binding PhoneNumber}" ></Entry>
+                        </Frame>
 
-                <Label  FontSize="Small" Text="Enter your address" Grid.Column="0" TextColor="Gray"/>
-                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                    <Entry FontSize="Medium" Text="{Binding Address}" BackgroundColor="AntiqueWhite" Placeholder="Enter your address" ></Entry>
-                </Frame>
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Label FontSize="Small" Text="Email" Grid.Column="0" TextColor="Gray"/>
-                    <Label Text="{Binding EmailError}" IsVisible="{Binding ShowEmailError}" Grid.Column="1" />
-                </Grid>
-                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" >
-                    <Entry FontSize="Medium" BackgroundColor="AntiqueWhite" Placeholder="Enter your email" Text="{Binding Email}" ></Entry>
-                </Frame>
+                        <Label  FontSize="Small" Text="Enter your address" Grid.Column="0" Grid.Row="6" TextColor="Gray"/>
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="7" BackgroundColor="LightGoldenrodYellow">
+                            <Entry FontSize="Medium" Text="{Binding Address}" BackgroundColor="AntiqueWhite" Placeholder="Enter your address" ></Entry>
+                        </Frame>
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Label FontSize="Small" Text="Password" Grid.Column="0" TextColor="Gray"/>
-                    <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" Grid.Column="1" />
-                </Grid>
-                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                    <Entry FontSize="Medium" IsPassword="True" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password" Text="{Binding Password}" ></Entry>
-                </Frame>
 
-                <!--Add later insertion of payment information when you figure out how u want to do it-->
+                        <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="8" TextColor="Gray"/>
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="9" BackgroundColor="LightGoldenrodYellow" >
+                            <Entry FontSize="Medium" BackgroundColor="AntiqueWhite" Placeholder="Enter your email" Text="{Binding Email}" ></Entry>
+                        </Frame>
 
-                <Button BackgroundColor="#29C529" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
-            </Grid>
+
+                        <Label FontSize="Small" Text="Password" Grid.Column="0" Grid.Row="10" TextColor="Gray"/>
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="11" BackgroundColor="LightGoldenrodYellow">
+                            <Entry FontSize="Medium" IsPassword="True" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password" Text="{Binding Password}" ></Entry>
+                        </Frame>
+
+                        <!--Add later insertion of payment information when you figure out how u want to do it-->
+
+                        <Button BackgroundColor="#29C529" Grid.Column="0" Grid.Row="12" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
+                    </Grid>
+                </StackLayout>
+
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
