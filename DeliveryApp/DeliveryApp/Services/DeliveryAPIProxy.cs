@@ -104,7 +104,7 @@ namespace DeliveryApp.Services
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/register?firstName={firstName}&lastName={lastName}&email={email}&dt={birthDate}&username={username}&password={pswd}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/SignUp?firstName={firstName}&lastName={lastName}&email={email}&dt={birthDate}&username={username}&password={pswd}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
