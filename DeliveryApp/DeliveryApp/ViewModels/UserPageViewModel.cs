@@ -98,22 +98,22 @@ namespace DeliveryApp.ViewModels
         }
         public async void MoveChangeCredential()
         {
-            await App.Current.MainPage.Navigation.PushModalAsync(new Views.ChangeCredentialsPage());
             DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-            User user = await proxy.LoginAsync(Email, Password);
-            if (user == null)
+            App theApp = (App)App.Current;
+            User u = new User(theApp.CurrentUser);
+            if ( u != null)
             {
-                await App.Current.MainPage.DisplayAlert("error", "failed, please Log In", "ok");
-                await App.Current.MainPage.Navigation.PushModalAsync(new Views.LogInPage());
-
-            }
-            else
-            {
-                
+                await App.Current.MainPage.Navigation.PushModalAsync(new Views.ChangeCredentialsPage());
                 Page p = new NavigationPage(new Views.ChangeCredentialsPage());
                 App.Current.MainPage = p;
 
                 //d
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("error", "failed, please Log In", "ok");
+                await App.Current.MainPage.Navigation.PushModalAsync(new Views.LogInPage());
+
             }
         }
     }

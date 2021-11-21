@@ -1,7 +1,11 @@
-﻿using System;
+﻿using DeliveryApp.Models;
+using DeliveryApp.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DeliveryApp.ViewModels
 {
@@ -87,20 +91,38 @@ namespace DeliveryApp.ViewModels
             }
         }
 
+        public ICommand ChangeCredentialCommand { protected set; get; }
 
-        //still not 100% sure if i do this might remove later think about it
+        public ChangeCredentialsPageViewModel()
+        {
+            ChangeCredentialCommand = new Command(ChangeCredential);
+        }
+        public async void ChangeCredential()
+        {
+            await App.Current.MainPage.Navigation.PushModalAsync(new Views.ChangeCredentialsPage());
+            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+            App theApp = (App)App.Current;
+            User u = new User(theApp.CurrentUser);
+            if (u == null)
+            {
+                await App.Current.MainPage.DisplayAlert("error", "failed, please Log In", "ok");
+                await App.Current.MainPage.Navigation.PushModalAsync(new Views.LogInPage());
+                Page p = new NavigationPage(new Views.LogInPage());
+                App.Current.MainPage = p;
+            }
+            else
+            {
 
-        //Maybe slpilt
+                Page p = new NavigationPage(new Views.ChangeCredentialsPage());
+                App.Current.MainPage = p;
 
-        //private PaymentInfo paFo;
-        //public PaymentInfo PaFo
-        //{
-        //    get { return paFo; }
-        //    set
-        //    {
-        //        paFo = value;
-        //        OnPropertyChanged("PaFo");
-        //    }
+                //d
+            }
+        }
+
+
+
+
         //}
     }
 }

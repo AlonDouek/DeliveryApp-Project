@@ -17,9 +17,18 @@ namespace DeliveryApp.Models
             this.FirstName = FirstName;
             this.LastName = LastName;
             this.UserPswd = ps;
-            this.Id = 747474747;//when understand fix
         
         
+        }
+
+        public User(User u)
+        {
+            this.Email = u.Email;
+            this.FirstName = u.FirstName;
+            this.LastName = u.LastName;
+            this.UserPswd =u.UserPswd;
+
+
         }
     }
 }
