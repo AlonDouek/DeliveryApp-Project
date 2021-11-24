@@ -16,7 +16,7 @@ namespace DeliveryApp.Views
         public TabbedPage()
         {
             InitializeComponent();
-            CreateTabs();
+            
         }
         
     }
