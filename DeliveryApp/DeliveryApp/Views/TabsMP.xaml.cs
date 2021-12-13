@@ -5,19 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.Xaml;
 
 namespace DeliveryApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TabbedPage : TabbedPage
+    public partial class TabsMP : TabbedPage
     {
-        public TabbedPage()
+        public TabsMP()
         {
             InitializeComponent();
-            
         }
-        
     }
 }

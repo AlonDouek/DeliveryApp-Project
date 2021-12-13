@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DeliveryApp.ViewModels
 {
-    class TabbedPageViewModel
+    class TabMPViewModel
     {
 
         #region INotifyPropertyChanged

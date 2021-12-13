@@ -26,7 +26,7 @@
     <EmbeddedResource Update="Views\SignUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TabbedPage.xaml">
+    <EmbeddedResource Update="Views\TabsMP.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UserPage.xaml">
