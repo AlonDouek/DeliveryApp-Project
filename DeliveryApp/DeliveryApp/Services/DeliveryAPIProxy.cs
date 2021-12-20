@@ -30,7 +30,7 @@ namespace DeliveryApp.Services
         public static DeliveryAPIProxy CreateProxy()
         {
             string baseUri;
-
+ 
             if (App.IsDevEnv)
             {
                 if (Device.RuntimePlatform == Device.Android)
