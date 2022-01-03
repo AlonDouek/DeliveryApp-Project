@@ -11,6 +11,7 @@ using System.Text.Encodings.Web;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.IO;
+using DeliveryServer.Models;
 
 namespace DeliveryApp.Services
 {
@@ -75,7 +76,7 @@ namespace DeliveryApp.Services
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?email={email}&pass={pass}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?Email={email}&Password={pass}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
@@ -99,12 +100,11 @@ namespace DeliveryApp.Services
             }
         }
 
-        //change when know how cause im no sure
-        public async Task<User> SignUpAsync(string firstName, string lastName, string email, DateTime birthDate, string username, string pswd)
+        public async Task<User> SignUpAsync(string email, string username, string pswd, string Address, string PhoneNumber, string CreditCard)
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/SignUp?firstName={firstName}&lastName={lastName}&email={email}&dt={birthDate}&username={username}&password={pswd}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/SignUp?Username={username}&Password={pswd}&Email={email}&Address={Address}&PhoneNumber={PhoneNumber}&CreditCard={CreditCard}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
