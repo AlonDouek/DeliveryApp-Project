@@ -45,27 +45,17 @@ namespace DeliveryApp.ViewModels
             }
         }
 
-        private string lastName;
-        public string LastName
+        private string username;
+        public string Username
         {
-            get { return lastName; }
+            get { return username; }
             set
             {
-                lastName = value;
-                OnPropertyChanged("LastName");
+                username = value;
+                OnPropertyChanged("Username");
             }
         }
 
-        private string firstName;
-        public string FirstName
-        {
-            get { return firstName; }
-            set
-            {
-                firstName = value;
-                OnPropertyChanged("FirstName");
-            }
-        }
 
         private string address;
 
@@ -92,21 +82,17 @@ namespace DeliveryApp.ViewModels
             }
         }
 
+        private string creditCard;
+        public string CreditCard
+        {
+            get { return creditCard; }
 
-        //still not 100% sure if i do this might remove later think about it
-
-        //Maybe slpilt
-
-        //private PaymentInfo paFo;
-        //public PaymentInfo PaFo
-        //{
-        //    get { return paFo; }
-        //    set
-        //    {
-        //        paFo = value;
-        //        OnPropertyChanged("PaFo");
-        //    }
-        //}
+            set
+            {
+                creditCard = value;
+                OnPropertyChanged("CreditCard");
+            }
+        }
 
         public ICommand SubmitCommand { protected set; get; }
 

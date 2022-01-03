@@ -11,42 +11,40 @@
                     </Frame>
                     <Grid BackgroundColor="Ivory">
 
-                        <Label Text="First Name" Grid.Column="0" Grid.Row="0" TextColor="Gray" FontSize="Small"  />
-                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="1" BackgroundColor="LightGoldenrodYellow">
-                            <Entry FontSize="Small" Text="{Binding FirstName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your First name" ></Entry>
-                        </Frame>
-
-
-                        <Label FontSize="Small" Text="Last name" Grid.Column="0" Grid.Row="2" TextColor="Gray" />
-                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="3" BackgroundColor="LightGoldenrodYellow">
-                            <Entry FontSize="Small" Text="{Binding LastName}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Last name" ></Entry>
-                        </Frame>
-
-
-                        <Label FontSize="Small" Text="phoneNumber" Grid.Column="0" Grid.Row="4" TextColor="Gray"/>
-                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="5" BackgroundColor="LightGoldenrodYellow" >
-                            <Entry FontSize="Small" BackgroundColor="AntiqueWhite" Placeholder="Enter your Phone Number" Text="{Binding PhoneNumber}" ></Entry>
-                        </Frame>
-
-
-                        <Label  FontSize="Small" Text="Enter your address" Grid.Column="0" Grid.Row="6" TextColor="Gray"/>
-                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="7" BackgroundColor="LightGoldenrodYellow">
-                            <Entry FontSize="Small" Text="{Binding Address}" BackgroundColor="AntiqueWhite" Placeholder="Enter your address" ></Entry>
-                        </Frame>
-
-
-                        <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="8" TextColor="Gray"/>
-                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="9" BackgroundColor="LightGoldenrodYellow" >
+                        <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="0" TextColor="Gray"/>
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="1" BackgroundColor="LightGoldenrodYellow" >
                             <Entry FontSize="Small" BackgroundColor="AntiqueWhite" Placeholder="Enter your email" Text="{Binding Email}" ></Entry>
                         </Frame>
 
 
-                        <Label FontSize="Small" Text="Password" Grid.Column="0" Grid.Row="10" TextColor="Gray"/>
-                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="11" BackgroundColor="LightGoldenrodYellow">
+                        <Label FontSize="Small" Text="Password" Grid.Column="0" Grid.Row="2" TextColor="Gray"/>
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="3" BackgroundColor="LightGoldenrodYellow">
                             <Entry FontSize="Small" IsPassword="True" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password" Text="{Binding Password}" ></Entry>
                         </Frame>
+                        
+                        <Label FontSize="Small" Text="Username" Grid.Column="0" Grid.Row="4" TextColor="Gray" />
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="5" BackgroundColor="LightGoldenrodYellow">
+                            <Entry FontSize="Small" Text="{Binding Username}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Username " ></Entry>
+                        </Frame>
 
-                        <!--Add later insertion of payment information when you figure out how u want to do it-->
+
+                        <Label FontSize="Small" Text="phoneNumber" Grid.Column="0" Grid.Row="6" TextColor="Gray"/>
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="7" BackgroundColor="LightGoldenrodYellow" >
+                            <Entry FontSize="Small" Text="{Binding PhoneNumber}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Phone Number" ></Entry>
+                        </Frame>
+
+
+                        <Label  FontSize="Small" Text="Enter your address" Grid.Column="0" Grid.Row="8" TextColor="Gray"/>
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="9" BackgroundColor="LightGoldenrodYellow">
+                            <Entry FontSize="Small" Text="{Binding Address}" BackgroundColor="AntiqueWhite" Placeholder="Enter your address" ></Entry>
+                        </Frame>
+
+                        <Label  FontSize="Small" Text="Enter your credit card number" Grid.Column="0" Grid.Row="10" TextColor="Gray"/>
+                        <Frame CornerRadius="6" Grid.Column="0" Grid.Row="11" BackgroundColor="LightGoldenrodYellow">
+                            <Entry FontSize="Small" Text="{Binding CreditCard}" BackgroundColor="AntiqueWhite" Placeholder="Enter your number" ></Entry>
+                        </Frame>
+
+
 
                         <Button BackgroundColor="#29C529" Grid.Column="0" Grid.Row="12" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
                     </Grid>
