@@ -1,33 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DeliveryApp.Models
+
+namespace DeliveryServer.Models
 {
     public partial class User
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string UserPswd { get; set; }
+        public User()
+        {
+            Orders = new HashSet<Order>();
+        }
 
-        public User(string Email,string FirstName ,string LastName,string ps)
+        public int UserId { get; set; }
+        public string Email { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Address { get; set; }
+        public string PhoneNumber { get; set; }
+        public string CreditCard { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
+
+        public User(string Email, string UN, string ps, string Address, string PhoneNumber, string CreditCard)
         {
             this.Email = Email;
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.UserPswd = ps;
-        
-        
+            this.Username = UN;
+            this.Password = ps;
+            this.Address = Address;
+            this.PhoneNumber = PhoneNumber;
+            this.CreditCard = CreditCard;
+
         }
 
         public User(User u)
         {
             this.Email = u.Email;
-            this.FirstName = u.FirstName;
-            this.LastName = u.LastName;
-            this.UserPswd =u.UserPswd;
-
+            this.Username = u.Username;
+            this.Password = u.Password;
+            this.Address = Address;
+            this.PhoneNumber = PhoneNumber;
+            this.CreditCard = CreditCard;
 
         }
     }
