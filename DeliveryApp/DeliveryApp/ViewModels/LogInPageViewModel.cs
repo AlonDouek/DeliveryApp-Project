@@ -94,6 +94,31 @@ namespace DeliveryApp.ViewModels
             }
         }
 
+        private string error;
+
+        public string Error
+        {
+            get => error;
+            set
+            {
+                error = value;
+                OnPropertyChanged("Error");
+            }
+        }
+
+        private bool showError;
+
+        public bool ShowError
+        {
+            get => showError;
+            set
+            {
+                showError = value;
+                OnPropertyChanged("ShowError");
+            }
+        }
+
+
         private void ValidatePassword()
         {
             if(!string.IsNullOrEmpty(Password))
@@ -127,16 +152,29 @@ namespace DeliveryApp.ViewModels
         {
             SubmitCommand = new Command(OnSubmit);
             PasswordError = "must type password between 5-30 character!";
-            showPasswordError = false;
+            ShowPasswordError = false;
             EmailError = "must type correct Email";
-            
+            ShowEmailError = false;
         }
 
+        private bool ValidateForm()
+        {
+            if (((App)App.Current).CurrentUser != null)
+            {
+                Error = "You are already logged in";
+                return false;
+            }
+
+            ValidateEmail();
+            ValidatePassword();
+
+            return !(ShowEmailError || ShowPasswordError);
+        }
         public async void OnSubmit()
         {
             if (Email != "" && Password != "")
             {
-                ValidatePassword();
+                ValidateForm();
                 if (ShowPasswordError)
                 {
                     await App.Current.MainPage.DisplayAlert("error", "Password Must be between 5-30 characters", "ok");
@@ -170,3 +208,5 @@ namespace DeliveryApp.ViewModels
 
     }
 }
+
+

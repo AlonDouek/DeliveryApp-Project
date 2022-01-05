@@ -31,6 +31,29 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("Email");
             }
         }
+        private string emailError;
+
+        public string EmailError
+        {
+            get => emailError;
+            set
+            {
+                emailError = value;
+                OnPropertyChanged("EmailError");
+            }
+        }
+
+        private bool showEmailError;
+
+        public bool ShowEmailError
+        {
+            get => showEmailError;
+            set
+            {
+                showEmailError = value;
+                OnPropertyChanged("ShowEmailError");
+            }
+        }
 
         private string password;
 
@@ -42,6 +65,30 @@ namespace DeliveryApp.ViewModels
             {
                 password = value;
                 OnPropertyChanged("Password");
+            }
+        }
+
+        private string passwordError;
+
+        public string PasswordError
+        {
+            get => passwordError;
+            set
+            {
+                passwordError = value;
+                OnPropertyChanged("PasswordError");
+            }
+        }
+
+        private bool showPasswordError;
+
+        public bool ShowPasswordError
+        {
+            get => showPasswordError;
+            set
+            {
+                showPasswordError = value;
+                OnPropertyChanged("ShowPasswordError");
             }
         }
 
@@ -95,54 +142,65 @@ namespace DeliveryApp.ViewModels
         }
         public SignUpPageViewModel()
         {
-
+          
+            PasswordError = "must type password";
+            ShowPasswordError = false;
+            EmailError = "must type correct Email";
+            ShowEmailError = false;
         }
+        //fix validation
+        private void ValidatePassword()
+        {
+            if (!string.IsNullOrEmpty(Password))
+                this.ShowPasswordError = Password.Length > 5 && Password.Length < 30;
+            else
+                this.showPasswordError = true;
+        }
+        //private void ValidateEmail()
+        //{
+        //    if (!string.IsNullOrEmpty(Email))
+        //    {
+        //        try
+        //        {
+        //            var VE = new System.Net.Mail.MailAddress(Email);
+        //            this.ShowEmailError = VE.Address != Email;
+        //        }
+        //        catch
+        //        {
+        //            this.ShowEmailError = true;
+        //        }
+        //    }
+        //    else
+        //        this.ShowEmailError = true;
 
+
+        //}
+
+        //private bool ValidateForm()
+        //{
+        //    ValidateEmail();
+        //    ValidatePassword();
+
+        //    return !(ShowEmailError || ShowPasswordError);
+        //}
         public ICommand Register => new Command(OnRegister);
 
         
         public async void OnRegister()
         {
             
-                //TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
-                //User u = new User()
-                //{
-                //    Email = Email,
-                //    NickName = Username,
-                //    Password = Password,
-                //    Questions = new List<AmericanQuestion>()
-                //};
-                //bool valid = await proxy.RegisterUser(u);
-                //if (valid)
-                //{
-                //    User user = await proxy.LoginAsync(Email, Password);
-                //    App theApp = (App)App.Current;
-                //    theApp.CurrentUser = user;
-                //    ((App)App.Current).currentUser = user;
-                //    PopToRoot.Invoke();
-                //}
-                //else
-                //    ErrorMessage = "Something went wrong! Please try again later.";
+            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
             
 
-
-
-            await App.Current.MainPage.Navigation.PushModalAsync(new Views.UserPage());
-            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-            User user = await proxy.LoginAsync(Email, Password);
-            if (user == null)
+            if (ValidateForm())
             {
-
-                await App.Current.MainPage.DisplayAlert("error", "Log In failed please try again", "ok");
-            }
-            else
-            {
-                
+                User user = await proxy.SignUpAsync(Email, Username, Password, Address, PhoneNumber, CreditCard);
+               
+                App theApp = (App)App.Current;
+                theApp.CurrentUser = user;
 
                 Page p = new NavigationPage(new Views.UserPage());
                 App.Current.MainPage = p;
-
-                //d
             }
         }
     }

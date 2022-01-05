@@ -72,6 +72,10 @@ namespace DeliveryApp.Services
             this.baseUri = baseUri;
         }
 
+        //public async Task<bool> EmailExists(string email)
+        //{
+          
+        //}
         public async Task<User> LoginAsync(string email, string pass)
         {
             try
@@ -126,6 +130,10 @@ namespace DeliveryApp.Services
                 return null;
             }
         }
+
+
+
+
     }
 }
 //dibbler -=for desigen
