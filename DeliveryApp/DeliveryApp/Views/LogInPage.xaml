@@ -17,19 +17,20 @@
                 </Frame>
 
                 <Grid Grid.Column="0" Grid.Row="2">
-                    <Grid.ColumnDefinitions>
+                    <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
+                    </Grid.RowDefinitions>-->
                     <Label FontSize="Small" Text="Password" Grid.Column="0" Grid.Row="0" TextColor="Gray"/>
-                    <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" Grid.Column="1" Grid.Row="0" />
+                    <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="1">
+                        <Entry FontSize="Medium" IsPassword="True" Text="{Binding Password}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password"></Entry>
+                    </Frame>
+                    <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" Grid.Column="0" Grid.Row="2" />
                 </Grid>
-                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow" Grid.Column="0" Grid.Row="3">
-                    <Entry FontSize="Medium" IsPassword="True" Text="{Binding Password}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password"></Entry>
-                </Frame>
+                
                 
                 
                 

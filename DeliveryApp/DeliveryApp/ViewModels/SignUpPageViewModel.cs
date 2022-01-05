@@ -172,8 +172,6 @@ namespace DeliveryApp.ViewModels
         //    }
         //    else
         //        this.ShowEmailError = true;
-
-
         //}
 
         //private bool ValidateForm()
@@ -183,25 +181,25 @@ namespace DeliveryApp.ViewModels
 
         //    return !(ShowEmailError || ShowPasswordError);
         //}
-        public ICommand Register => new Command(OnRegister);
+        //public ICommand Register => new Command(OnRegister);
 
         
-        public async void OnRegister()
-        {
+        //public async void OnRegister()
+        //{
             
-            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+        //    DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
             
 
-            if (ValidateForm())
-            {
-                User user = await proxy.SignUpAsync(Email, Username, Password, Address, PhoneNumber, CreditCard);
+        //    if (ValidateForm())
+        //    {
+        //        User user = await proxy.SignUpAsync(Email, Username, Password, Address, PhoneNumber, CreditCard);
                
-                App theApp = (App)App.Current;
-                theApp.CurrentUser = user;
+        //        App theApp = (App)App.Current;
+        //        theApp.CurrentUser = user;
 
-                Page p = new NavigationPage(new Views.UserPage());
-                App.Current.MainPage = p;
-            }
-        }
+        //        Page p = new NavigationPage(new Views.UserPage());
+        //        App.Current.MainPage = p;
+        //    }
+        //}
     }
 }
