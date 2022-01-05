@@ -31,6 +31,30 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("Email");
             }
         }
+        private string emailError;
+
+        public string EmailError
+        {
+            get => emailError;
+            set
+            {
+                emailError = value;
+                OnPropertyChanged("EmailError");
+            }
+        }
+
+        private bool showEmailError;
+
+        public bool ShowEmailError
+        {
+            get => showEmailError;
+            set
+            {
+                showEmailError = value;
+                OnPropertyChanged("ShowEmailError");
+            }
+        }
+
 
         private string password;
 
@@ -74,15 +98,37 @@ namespace DeliveryApp.ViewModels
         {
             if(!string.IsNullOrEmpty(Password))
                 this.ShowPasswordError = Password.Length > 5 && Password.Length < 30;
+            else
+                this.showPasswordError = true;
         }
-       
+        private void ValidateEmail()
+        {
+            if (!string.IsNullOrEmpty(Email))
+            {
+                try
+                {
+                    var VE = new System.Net.Mail.MailAddress(Email);
+                    this.ShowEmailError = VE.Address != Email;
+                }
+                catch
+                {
+                    this.ShowEmailError = true;
+                }
+            }
+            else
+                this.ShowEmailError = true;
+           
+
+        }
+
         public ICommand SubmitCommand { protected set; get; }
 
         public LogInPageViewModel()
         {
             SubmitCommand = new Command(OnSubmit);
-            PasswordError = "password must be between 5-30 character!";
+            PasswordError = "must type password between 5-30 character!";
             showPasswordError = false;
+            EmailError = "must type correct Email";
             
         }
 

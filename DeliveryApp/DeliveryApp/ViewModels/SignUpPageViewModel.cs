@@ -93,15 +93,40 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("CreditCard");
             }
         }
-
-        public ICommand SubmitCommand { protected set; get; }
-
         public SignUpPageViewModel()
         {
-            SubmitCommand = new Command(OnSubmit);
+
         }
-        public async void OnSubmit()
+
+        public ICommand Register => new Command(OnRegister);
+
+        
+        public async void OnRegister()
         {
+            
+                //TriviaWebAPIProxy proxy = TriviaWebAPIProxy.CreateProxy();
+                //User u = new User()
+                //{
+                //    Email = Email,
+                //    NickName = Username,
+                //    Password = Password,
+                //    Questions = new List<AmericanQuestion>()
+                //};
+                //bool valid = await proxy.RegisterUser(u);
+                //if (valid)
+                //{
+                //    User user = await proxy.LoginAsync(Email, Password);
+                //    App theApp = (App)App.Current;
+                //    theApp.CurrentUser = user;
+                //    ((App)App.Current).currentUser = user;
+                //    PopToRoot.Invoke();
+                //}
+                //else
+                //    ErrorMessage = "Something went wrong! Please try again later.";
+            
+
+
+
             await App.Current.MainPage.Navigation.PushModalAsync(new Views.UserPage());
             DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
             User user = await proxy.LoginAsync(Email, Password);
@@ -112,8 +137,7 @@ namespace DeliveryApp.ViewModels
             }
             else
             {
-                App theApp = (App)App.Current;
-                theApp.CurrentUser = user;
+                
 
                 Page p = new NavigationPage(new Views.UserPage());
                 App.Current.MainPage = p;
