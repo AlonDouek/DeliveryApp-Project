@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-
+ 
 namespace DeliveryApp.ViewModels
 {
     class LogInPageViewModel

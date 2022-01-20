@@ -8,7 +8,7 @@
                 <Label FontSize="Caption" Text="Log In" />
             </Frame>
             <Grid BackgroundColor="Ivory">
-
+ 
                 
 
                 <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="0" TextColor="Gray"></Label>
