@@ -18,7 +18,7 @@ namespace DeliveryApp.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion 
 
 
         private string email;

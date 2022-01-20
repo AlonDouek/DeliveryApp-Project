@@ -15,7 +15,7 @@ namespace DeliveryApp.Views
         public LogInPage()
         {
             this.BindingContext = new LogInPageViewModel();
-            InitializeComponent();
+            InitializeComponent(); 
         }
         private void SignUp(object sender, EventArgs e)
         {

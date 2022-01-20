@@ -16,7 +16,7 @@
                     <Entry FontSize="Medium" Text="{Binding Email}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Email" ></Entry>
                 </Frame>
 
-                <Grid Grid.Column="0" Grid.Row="2">
+                <Grid Grid.Column="0" Grid.Row="2"> 
                     <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
