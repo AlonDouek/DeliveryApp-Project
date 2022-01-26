@@ -156,50 +156,37 @@ namespace DeliveryApp.ViewModels
             else
                 this.showPasswordError = true;
         }
-        //private void ValidateEmail()
-        //{
-        //    if (!string.IsNullOrEmpty(Email))
-        //    {
-        //        try
-        //        {
-        //            var VE = new System.Net.Mail.MailAddress(Email);
-        //            this.ShowEmailError = VE.Address != Email;
-        //        }
-        //        catch
-        //        {
-        //            this.ShowEmailError = true;
-        //        }
-        //    }
-        //    else
-        //        this.ShowEmailError = true;
-        //}
+        private void ValidateEmail()
+        {
+            if (!string.IsNullOrEmpty(Email))
+                this.ShowEmailError = Email.Contains("@") && Email.EndsWith(".com");
+            else
+                this.ShowEmailError = true;
+        }
 
-        //private bool ValidateForm()
-        //{
-        //    ValidateEmail();
-        //    ValidatePassword();
+        private bool ValidateForm()
+        {
+            ValidateEmail();
+            ValidatePassword();
 
-        //    return !(ShowEmailError || ShowPasswordError);
-        //}
-        //public ICommand Register => new Command(OnRegister);
+            return !(ShowEmailError || ShowPasswordError);
+        }
+        public ICommand Register => new Command(OnSubmit);
 
-        
-        //public async void OnRegister()
-        //{
-            
-        //    DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-            
+        public async void OnSubmit()
+        {
+            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
 
-        //    if (ValidateForm())
-        //    {
-        //        User user = await proxy.SignUpAsync(Email, Username, Password, Address, PhoneNumber, CreditCard);
-               
-        //        App theApp = (App)App.Current;
-        //        theApp.CurrentUser = user;
+            if (ValidateForm())
+            {
+                User user = await proxy.SignUpAsync(Email, Username, Password, Address, PhoneNumber, CreditCard);
 
-        //        Page p = new NavigationPage(new Views.UserPage());
-        //        App.Current.MainPage = p;
-        //    }
-        //}
+                App theApp = (App)App.Current;
+                theApp.CurrentUser = user;
+
+                Page p = new NavigationPage(new Views.UserPage());
+                App.Current.MainPage = p;
+            }
+        }
     }
 }

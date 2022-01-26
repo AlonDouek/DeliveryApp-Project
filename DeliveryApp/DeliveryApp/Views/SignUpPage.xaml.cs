@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeliveryApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,14 @@ namespace DeliveryApp.Views
     {
         public SignUpPage()
         {
+        
+            this.BindingContext = new SignUpPageViewModel();
+
             InitializeComponent();
+        }
+        private void goToUserPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new UserPage());
         }
     }
 }

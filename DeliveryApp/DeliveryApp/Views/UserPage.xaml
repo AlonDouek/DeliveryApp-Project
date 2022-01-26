@@ -4,23 +4,11 @@
              x:Class="DeliveryApp.Views.UserPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to user Xamarin.Forms!" />
+            <Label Text="HELLO," />
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Frame CornerRadius="6" Grid.Column="0" Grid.Row="0" BackgroundColor="LightGoldenrodYellow">
-                    <Label FontSize="Medium" Text="{Binding FirstName}" BackgroundColor="AntiqueWhite" ></Label>
-                </Frame>
-                <Frame CornerRadius="6" Grid.Column="0" Grid.Row="1" BackgroundColor="LightGoldenrodYellow">
-                    <Label FontSize="Medium" Text="{Binding LastName}" BackgroundColor="AntiqueWhite" ></Label>
-                </Frame>
-            </Grid>
+            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                <Label FontSize="Medium" Text="{Binding Username}" BackgroundColor="AntiqueWhite" ></Label>
+            </Frame>
 
             <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
                 <Label FontSize="Medium" Text="{Binding Email}" BackgroundColor="AntiqueWhite" ></Label>

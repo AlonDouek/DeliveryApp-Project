@@ -122,7 +122,7 @@ namespace DeliveryApp.ViewModels
         private void ValidatePassword()
         {
             if(!string.IsNullOrEmpty(Password))
-                this.ShowPasswordError = Password.Length > 5 && Password.Length < 30;
+                this.ShowPasswordError = Password.Length < 5 && Password.Length > 30;
             else
                 this.showPasswordError = true;
         }
@@ -174,7 +174,7 @@ namespace DeliveryApp.ViewModels
         {
             if (Email != "" && Password != "")
             {
-                ValidateForm();
+                //ValidateForm();
                 if (ShowPasswordError)
                 {
                     await App.Current.MainPage.DisplayAlert("error", "Password Must be between 5-30 characters", "ok");
