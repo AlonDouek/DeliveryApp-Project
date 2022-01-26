@@ -147,6 +147,7 @@ namespace DeliveryApp.ViewModels
             ShowPasswordError = false;
             EmailError = "must type correct Email";
             ShowEmailError = false;
+            this.SignUpCommand = new Command(() => OnRegister());
         }
         //fix validation
         private void ValidatePassword()
@@ -171,9 +172,10 @@ namespace DeliveryApp.ViewModels
 
             return !(ShowEmailError || ShowPasswordError);
         }
-        public ICommand Register => new Command(OnSubmit);
+ 
+        public Command SignUpCommand { protected set; get; }
 
-        public async void OnSubmit()
+        public async void OnRegister()
         {
             DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
 
@@ -184,9 +186,12 @@ namespace DeliveryApp.ViewModels
                 App theApp = (App)App.Current;
                 theApp.CurrentUser = user;
 
-                Page p = new NavigationPage(new Views.UserPage());
-                App.Current.MainPage = p;
+                //Page p = new NavigationPage(new Views.UserPage());
+                //App.Current.MainPage = p;
+                Push?.Invoke(new Views.UserPage());
             }
         }
+
+        public event Action<Page> Push;
     }
 }
