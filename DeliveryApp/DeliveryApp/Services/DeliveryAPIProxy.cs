@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.IO;
 using DeliveryServer.Models;
+using DeliveryApp.DTO;
 
 namespace DeliveryApp.Services
 {
@@ -80,12 +81,20 @@ namespace DeliveryApp.Services
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?Email={email}&Password={pass}");
+                LogInDTO logInDTO = new LogInDTO
+                {
+                    Email = email,
+                    Password = pass
+                };
+                string logInDTOJson = JsonSerializer.Serialize(logInDTO);
+                StringContent logInDTOJsonContent = new StringContent(logInDTOJson, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/Login", logInDTOJsonContent);
+                //HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?Email={email}&Password={pass}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
                     {
-                        ReferenceHandler = ReferenceHandler.Preserve,
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
                         PropertyNameCaseInsensitive = true
                     };
                     string content = await response.Content.ReadAsStringAsync();

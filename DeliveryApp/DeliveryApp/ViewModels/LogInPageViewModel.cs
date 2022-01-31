@@ -1,5 +1,6 @@
 ﻿using DeliveryApp.Models;
 using DeliveryApp.Services;
+using DeliveryApp.Views;
 using DeliveryServer.Models;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,10 @@ namespace DeliveryApp.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion 
+        #endregion
 
-
+        #region props
+        #region email
         private string email;
         public string Email
         {
@@ -56,6 +58,9 @@ namespace DeliveryApp.ViewModels
         }
 
 
+        #endregion
+
+        #region password
         private string password;
 
         public string Password
@@ -65,7 +70,7 @@ namespace DeliveryApp.ViewModels
             set
             {
                 password = value;
-                ValidatePassword(); 
+                ValidatePassword();
                 OnPropertyChanged("Password");
             }
         }
@@ -93,6 +98,13 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("ShowPasswordError");
             }
         }
+        #endregion
+
+
+
+        #endregion
+
+
 
         private string error;
 
@@ -150,11 +162,12 @@ namespace DeliveryApp.ViewModels
 
         public LogInPageViewModel()
         {
-            SubmitCommand = new Command(OnSubmit);
+         
             PasswordError = "must type password between 5-30 character!";
             ShowPasswordError = false;
             EmailError = "must type correct Email";
             ShowEmailError = false;
+            SubmitCommand = new Command(OnSubmit);
         }
 
         private bool ValidateForm()
@@ -170,6 +183,7 @@ namespace DeliveryApp.ViewModels
 
             return !(ShowEmailError || ShowPasswordError);
         }
+
         public async void OnSubmit()
         {
             if (Email != "" && Password != "")
@@ -183,18 +197,18 @@ namespace DeliveryApp.ViewModels
                 {
                     DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
                     User user = await proxy.LoginAsync(Email, Password);
-                    if (user != null)
+                    if (user == null)
+                    {
+
+                        await App.Current.MainPage.DisplayAlert("error", "User not Logged In", "ok");
+                    }
+                    else
                     {
                         App theApp = (App)App.Current;
                         theApp.CurrentUser = user;
 
-                        Page p = new NavigationPage(new Views.UserPage());
-                        App.Current.MainPage = p;
+                        await App.Current.MainPage.Navigation.PushAsync(new UserPage());
 
-                    }
-                    else
-                    {
-                        await App.Current.MainPage.DisplayAlert("error", "User not Logged In", "ok");
                     }
                 }
                 
@@ -205,6 +219,8 @@ namespace DeliveryApp.ViewModels
 
             }
         }
+
+        
 
     }
 }
