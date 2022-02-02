@@ -1,5 +1,6 @@
 ﻿using DeliveryApp.Models;
 using DeliveryApp.Services;
+using DeliveryApp.Views;
 using DeliveryServer.Models;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,8 @@ namespace DeliveryApp.ViewModels
         }
         #endregion
 
-        
+        #region props
+        #region Email
         private string email;
         public string Email
         {
@@ -32,7 +34,6 @@ namespace DeliveryApp.ViewModels
             }
         }
         private string emailError;
-
         public string EmailError
         {
             get => emailError;
@@ -44,7 +45,6 @@ namespace DeliveryApp.ViewModels
         }
 
         private bool showEmailError;
-
         public bool ShowEmailError
         {
             get => showEmailError;
@@ -54,7 +54,9 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("ShowEmailError");
             }
         }
+        #endregion
 
+        #region password
         private string password;
 
         public string Password
@@ -92,6 +94,9 @@ namespace DeliveryApp.ViewModels
             }
         }
 
+        #endregion
+
+        #region username
         private string username;
         public string Username
         {
@@ -102,8 +107,9 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("Username");
             }
         }
+        #endregion
 
-
+        #region address
         private string address;
 
         public string Address
@@ -116,6 +122,9 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("Address");
             }
         }
+        #endregion
+
+        #region phoneNumber
         private string phoneNumber;
 
         public string PhoneNumber
@@ -128,7 +137,9 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("PhoneNumber");
             }
         }
+        #endregion
 
+        #region Credit Card
         private string creditCard;
         public string CreditCard
         {
@@ -140,6 +151,10 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("CreditCard");
             }
         }
+        #endregion
+        #endregion
+
+
         public SignUpPageViewModel()
         {
           
@@ -160,7 +175,7 @@ namespace DeliveryApp.ViewModels
         private void ValidateEmail()
         {
             if (!string.IsNullOrEmpty(Email))
-                this.ShowEmailError = Email.Contains("@") && Email.EndsWith(".com");
+                this.ShowEmailError = !(Email.Contains("@") && Email.EndsWith(".com"));
             else
                 this.ShowEmailError = true;
         }
@@ -177,21 +192,35 @@ namespace DeliveryApp.ViewModels
 
         public async void OnRegister()
         {
-            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
 
             if (ValidateForm())
             {
-                User user = await proxy.SignUpAsync(Email, Username, Password, Address, PhoneNumber, CreditCard);
+                DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+                User u = new User
+                {
+                    Email = Email,
+                    Password = Password,
+                    Username = Username,
+                    Address = Address,
+                    CreditCard = CreditCard,
+                    PhoneNumber = PhoneNumber
+                };
 
-                App theApp = (App)App.Current;
-                theApp.CurrentUser = user;
+                User user = await proxy.SignUpAsync(u);
 
-                //Page p = new NavigationPage(new Views.UserPage());
-                //App.Current.MainPage = p;
-                Push?.Invoke(new Views.UserPage());
+                if(user != null)
+                {
+                    App theApp = (App)App.Current;
+                    theApp.CurrentUser = user;
+
+                    App.Current.MainPage = new UserPage();
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Error", "sign up failed, please check and try again", "OK");
+                }
             }
         }
 
-        public event Action<Page> Push;
     }
 }

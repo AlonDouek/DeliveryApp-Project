@@ -75,21 +75,51 @@ namespace DeliveryApp.Services
 
         //public async Task<bool> EmailExists(string email)
         //{
-          
+
         //}
+        #region dd
+        //public async Task<User> LoginAsync(string email, string pass)
+        //{
+        //    try
+        //    {
+        //        LogInDTO logInDTO = new LogInDTO
+        //        {
+        //            Email = email,
+        //            Password = pass
+        //        };
+        //        string logInDTOJson = JsonSerializer.Serialize(logInDTO);
+        //        StringContent logInDTOJsonContent = new StringContent(logInDTOJson, Encoding.UTF8, "application/json");
+        //        HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/Login", logInDTOJsonContent);
+        //        //HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?Email={email}&Password={pass}");
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            JsonSerializerOptions options = new JsonSerializerOptions
+        //            {
+        //                ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+        //                PropertyNameCaseInsensitive = true
+        //            };
+        //            string content = await response.Content.ReadAsStringAsync();
+        //            User u = JsonSerializer.Deserialize<User>(content, options);
+        //            return u;
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //        return null;
+        //    }
+        //}
+        #endregion
         public async Task<User> LoginAsync(string email, string pass)
         {
+
             try
             {
-                LogInDTO logInDTO = new LogInDTO
-                {
-                    Email = email,
-                    Password = pass
-                };
-                string logInDTOJson = JsonSerializer.Serialize(logInDTO);
-                StringContent logInDTOJsonContent = new StringContent(logInDTOJson, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/Login", logInDTOJsonContent);
-                //HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?Email={email}&Password={pass}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?email={email}&pass={pass}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
@@ -112,12 +142,12 @@ namespace DeliveryApp.Services
                 return null;
             }
         }
-
-        public async Task<User> SignUpAsync(string email, string username, string pswd, string Address, string PhoneNumber, string CreditCard)
+       
+        public async Task<User> SignUpAsyncc(User u)
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/SignUp?Username={username}&Password={pswd}&Email={email}&Address={Address}&PhoneNumber={PhoneNumber}&CreditCard={CreditCard}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/SignUp?Username={u.Username}&Password={u.Password}&Email={u.Email}&Address={u.Address}&PhoneNumber={u.PhoneNumber}&CreditCard={u.CreditCard}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
@@ -140,9 +170,37 @@ namespace DeliveryApp.Services
             }
         }
 
+        public async Task<User> SignUpAsync(User u)
+        {
+            try
+            {
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize(u, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUp", content);
 
+                if (response.IsSuccessStatusCode)
+                {
+                    string respContent = await response.Content.ReadAsStringAsync();
+                    User user = JsonSerializer.Deserialize<User>(respContent);
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
 
 
     }
 }
-//dibbler -=for desigen

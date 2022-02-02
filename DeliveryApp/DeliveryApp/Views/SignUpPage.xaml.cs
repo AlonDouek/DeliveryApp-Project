@@ -17,7 +17,6 @@ namespace DeliveryApp.Views
         {
 
             SignUpPageViewModel context = new SignUpPageViewModel();
-            context.Push += (p) => Navigation.PushAsync(p);
             this.BindingContext = context;
 
             InitializeComponent();

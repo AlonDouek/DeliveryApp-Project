@@ -22,6 +22,7 @@ namespace DeliveryApp.ViewModels
         #endregion
 
         #region props
+
         #region email
         private string email;
         public string Email
@@ -186,43 +187,62 @@ namespace DeliveryApp.ViewModels
 
         public async void OnSubmit()
         {
-            if (Email != "" && Password != "")
+            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+            User user = await proxy.LoginAsync(Email, Password);
+
+            if (user == null)
             {
-                //ValidateForm();
-                if (ShowPasswordError)
-                {
-                    await App.Current.MainPage.DisplayAlert("error", "Password Must be between 5-30 characters", "ok");
-                }
-                else
-                {
-                    DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-                    User user = await proxy.LoginAsync(Email, Password);
-                    if (user == null)
-                    {
-
-                        await App.Current.MainPage.DisplayAlert("error", "User not Logged In", "ok");
-                    }
-                    else
-                    {
-                        App theApp = (App)App.Current;
-                        theApp.CurrentUser = user;
-
-                        await App.Current.MainPage.Navigation.PushAsync(new UserPage());
-
-                    }
-                }
-                
+                await App.Current.MainPage.DisplayAlert("Error", "Login failed, please check and try again", "OK");
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("error", "Log In failed! you must fill email and password", "ok");
+                App theApp = (App)Application.Current;
+                theApp.CurrentUser = user;
+
+                App.Current.MainPage = new UserPage();
 
             }
+
+
+            #region dddddddddd
+            //    if (Email != "" && Password != "")
+            //    {
+            //        //ValidateForm();
+            //        if (ShowPasswordError)
+            //        {
+            //            await App.Current.MainPage.DisplayAlert("error", "Password Must be between 5-30 characters", "ok");
+            //        }
+            //        else
+            //        {
+            //            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+            //            User user = await proxy.LoginAsync(Email, Password);
+            //            if (user == null)
+            //            {
+
+            //                await App.Current.MainPage.DisplayAlert("error", "User not Logged In", "ok");
+            //            }
+            //            else
+            //            {
+            //                App theApp = (App)App.Current;
+            //                theApp.CurrentUser = user;
+
+            //                App.Current.MainPage = new UserPage();
+            //            }
+            //        }
+
+            //    }
+            //    else
+            //    {
+            //        await App.Current.MainPage.DisplayAlert("error", "Log In failed! you must fill email and password", "ok");
+
+            //    }
+
+            #endregion
         }
 
-        
+
 
     }
-}
+    }
 
 
