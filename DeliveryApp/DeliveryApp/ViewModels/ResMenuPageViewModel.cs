@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DeliveryApp.ViewModels
 {
-    class TabMPViewModel
+    class ResMenuPageViewModel
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -14,9 +14,7 @@ namespace DeliveryApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-        
 
 
     }
-
 }

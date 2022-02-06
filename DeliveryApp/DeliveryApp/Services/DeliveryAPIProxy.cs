@@ -31,7 +31,7 @@ namespace DeliveryApp.Services
 
         public static DeliveryAPIProxy CreateProxy()
         {
-            string baseUri;
+            string baseUri = "https://localhost:44331/DeliveryAPI";
  
             if (App.IsDevEnv)
             {
@@ -70,7 +70,7 @@ namespace DeliveryApp.Services
 
             //Create client with the handler!
             this.client = new HttpClient(handler, true);
-            this.baseUri = baseUri;
+            this.baseUri = "https://localhost:44331/DeliveryAPI";// baseUri;
         }
 
         //public async Task<bool> EmailExists(string email)
