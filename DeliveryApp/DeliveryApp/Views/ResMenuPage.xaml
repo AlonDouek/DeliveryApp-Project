@@ -4,9 +4,13 @@
              x:Class="DeliveryApp.Views.ResMenuPage">
     <ContentPage.Content>
         <StackLayout>
-       
-            
-            
+
+
+            <CollectionView x:Name="Menu"   ItemsSource="{Binding }" SelectionMode="Single"
+                        SelectionChangedCommand="{Binding SelctionChanged}"
+                        SelectionChangedCommandParameter="{Binding Source={x:Reference collectionName}, Path=SelectedItem}">
+                
+            </CollectionView>
             
             
             
