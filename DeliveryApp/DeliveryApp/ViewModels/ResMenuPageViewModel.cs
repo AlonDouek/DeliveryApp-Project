@@ -1,10 +1,14 @@
 ﻿using DeliveryApp.Services;
+using DeliveryApp.Views;
 using DeliveryServer.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DeliveryApp.ViewModels
 {
@@ -47,6 +51,32 @@ namespace DeliveryApp.ViewModels
                 this.ResList.Add(m);
             }
         }
+
+        public ICommand SelctionChanged => new Command<Object>(OnSelectionChanged);
+        public void OnSelectionChanged(Object obj)
+        {
+            if (obj is Restaurant)
+            {
+                Restaurant choice = (Restaurant)obj;
+                Page resPage = new ShowRes();
+                //ShowResViewModel Context = new ShowResViewModel
+                //{
+
+                //};
+                //resPage.BindingContext = Context;
+                //resPage.Title = Context.Name;
+                //if (NavigateToPageEvent != null)
+                //    NavigateToPageEvent(resPage);
+            }
+        }
+
+
+
+        #region Events
+        //Events
+        //This event is used to navigate to the monkey page
+        public Action<Page> NavigateToPageEvent;
+        #endregion
 
     }
 }

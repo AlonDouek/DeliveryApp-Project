@@ -105,19 +105,7 @@ namespace DeliveryApp.ViewModels
 
         #endregion
 
-
-
-        private string error;
-
-        public string Error
-        {
-            get => error;
-            set
-            {
-                error = value;
-                OnPropertyChanged("Error");
-            }
-        }
+       
 
         private bool showError;
 
@@ -175,7 +163,7 @@ namespace DeliveryApp.ViewModels
         {
             if (((App)App.Current).CurrentUser != null)
             {
-                Error = "You are already logged in";
+                
                 return false;
             }
 
