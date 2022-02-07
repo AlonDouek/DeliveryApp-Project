@@ -44,8 +44,8 @@ namespace DeliveryApp.ViewModels
         }
         async void CreateResCollection()
         {
-            DeliveryAPIProxy proxy = new DeliveryAPIProxy();
-            List<Restaurant> theRestaurants = await proxy./*[Add later]*/();
+            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+            List<Restaurant> theRestaurants = await proxy.GetAllRestaurantsAsync();
             foreach (Restaurant m in theRestaurants)
             {
                 this.ResList.Add(m);

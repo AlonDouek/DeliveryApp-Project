@@ -20,10 +20,10 @@ namespace DeliveryApp.Services
     {
         private const string CLOUD_URL = "TBD"; //API url when going on the cloud
         //change ips
-        private const string DEV_ANDROID_EMULATOR_URL = "http://10.0.2.2:21604/DeliveryAPI"; //API url when using emulator on android
-        private const string DEV_ANDROID_PHYSICAL_URL = "http://10.58.55.7:21604/DeliveryAPI"; //API url when using physucal device on android
-        private const string DEV_WINDOWS_URL = "https://localhost:44331/DeliveryAPI"; //API url when using windoes on development
-
+        private const string DEV_ANDROID_EMULATOR_URL = "http://10.0.2.2:21604"; //API url when using emulator on android
+        private const string DEV_ANDROID_PHYSICAL_URL = "http://10.58.55.7:21604"; //API url when using physucal device on android
+        private const string DEV_WINDOWS_URL = "https://localhost:44331"; //API url when using windoes on development
+        
         private HttpClient client;
         private string baseUri;
         private string basePhotosUri;
@@ -73,53 +73,13 @@ namespace DeliveryApp.Services
             this.baseUri = "https://localhost:44331/DeliveryAPI";// baseUri;
         }
 
-        //public async Task<bool> EmailExists(string email)
-        //{
-
-        //}
-        #region dd
-        //public async Task<User> LoginAsync(string email, string pass)
-        //{
-        //    try
-        //    {
-        //        LogInDTO logInDTO = new LogInDTO
-        //        {
-        //            Email = email,
-        //            Password = pass
-        //        };
-        //        string logInDTOJson = JsonSerializer.Serialize(logInDTO);
-        //        StringContent logInDTOJsonContent = new StringContent(logInDTOJson, Encoding.UTF8, "application/json");
-        //        HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/Login", logInDTOJsonContent);
-        //        //HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?Email={email}&Password={pass}");
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            JsonSerializerOptions options = new JsonSerializerOptions
-        //            {
-        //                ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
-        //                PropertyNameCaseInsensitive = true
-        //            };
-        //            string content = await response.Content.ReadAsStringAsync();
-        //            User u = JsonSerializer.Deserialize<User>(content, options);
-        //            return u;
-        //        }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.Message);
-        //        return null;
-        //    }
-        //}
-        #endregion
+        
         public async Task<User> LoginAsync(string email, string pass)
         {
 
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/Login?email={email}&pass={pass}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/Login?email={email}&pass={pass}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
@@ -143,11 +103,11 @@ namespace DeliveryApp.Services
             }
         }
        
-        public async Task<User> SignUpAsyncc(User u)
+        public async Task<User> SignUpAsync(User u)
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/SignUp?Username={u.Username}&Password={u.Password}&Email={u.Email}&Address={u.Address}&PhoneNumber={u.PhoneNumber}&CreditCard={u.CreditCard}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/SignUp?Username={u.Username}&Password={u.Password}&Email={u.Email}&Address={u.Address}&PhoneNumber={u.PhoneNumber}&CreditCard={u.CreditCard}");
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
@@ -170,7 +130,7 @@ namespace DeliveryApp.Services
             }
         }
 
-        public async Task<User> SignUpAsync(User u)
+        public async Task<User> TEMPSignUpAsync(User u)
         {
             try
             {
@@ -181,7 +141,7 @@ namespace DeliveryApp.Services
                 };
                 string jsonObject = JsonSerializer.Serialize(u, options);
                 StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUp", content);
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/DeliveryAPI/SignUp", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -201,6 +161,27 @@ namespace DeliveryApp.Services
             }
         }
 
+        public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
+        {
+            List<Restaurant> source = new List<Restaurant>();
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/ ");
+                if (response.IsSuccessStatusCode)
+                {
+                    
+                    return source;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
 
     }
 }
