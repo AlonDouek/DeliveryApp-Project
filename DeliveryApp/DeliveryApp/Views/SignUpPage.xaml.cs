@@ -15,15 +15,10 @@ namespace DeliveryApp.Views
     {
         public SignUpPage()
         {
-
-            SignUpPageViewModel context = new SignUpPageViewModel();
-            this.BindingContext = context;
-
+            this.BindingContext = new SignUpPageViewModel();
+            
             InitializeComponent();
         }
-        private void goToUserPage(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new UserPage());
-        }
+       
     }
 }

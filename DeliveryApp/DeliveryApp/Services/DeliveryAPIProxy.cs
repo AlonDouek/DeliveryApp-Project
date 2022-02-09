@@ -20,9 +20,9 @@ namespace DeliveryApp.Services
     {
         private const string CLOUD_URL = "TBD"; //API url when going on the cloud
         //change ips
-        private const string DEV_ANDROID_EMULATOR_URL = "http://10.0.2.2:21604"; //API url when using emulator on android
-        private const string DEV_ANDROID_PHYSICAL_URL = "http://10.58.55.7:21604"; //API url when using physucal device on android
-        private const string DEV_WINDOWS_URL = "https://localhost:44331"; //API url when using windoes on development
+        private const string DEV_ANDROID_EMULATOR_URL = "http://10.0.2.2:16340"; //API url when using emulator on android
+        private const string DEV_ANDROID_PHYSICAL_URL = "http://10.58.55.7:16340"; //API url when using physucal device on android
+        private const string DEV_WINDOWS_URL = "http://localhost:16340"; //API url when using windoes on development
         
         private HttpClient client;
         private string baseUri;
@@ -31,8 +31,8 @@ namespace DeliveryApp.Services
 
         public static DeliveryAPIProxy CreateProxy()
         {
-            string baseUri = "https://localhost:44331/DeliveryAPI";
- 
+
+            string baseUri;
             if (App.IsDevEnv)
             {
                 if (Device.RuntimePlatform == Device.Android)
@@ -70,7 +70,7 @@ namespace DeliveryApp.Services
 
             //Create client with the handler!
             this.client = new HttpClient(handler, true);
-            this.baseUri = "https://localhost:44331/DeliveryAPI";// baseUri;
+            this.baseUri = baseUri;
         }
 
         
@@ -79,6 +79,7 @@ namespace DeliveryApp.Services
 
             try
             {
+                string str = $"{this.baseUri}/DeliveryAPI/Login?email={email}&pass={pass}";
                 HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/Login?email={email}&pass={pass}");
                 if (response.IsSuccessStatusCode)
                 {

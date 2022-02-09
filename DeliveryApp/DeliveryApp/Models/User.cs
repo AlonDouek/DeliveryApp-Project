@@ -37,9 +37,9 @@ namespace DeliveryServer.Models
             this.Email = u.Email;
             this.Username = u.Username;
             this.Password = u.Password;
-            this.Address = Address;
-            this.PhoneNumber = PhoneNumber;
-            this.CreditCard = CreditCard;
+            this.Address = u.Address;
+            this.PhoneNumber = u.PhoneNumber;
+            this.CreditCard = u.CreditCard;
 
         }
     }

@@ -186,46 +186,12 @@ namespace DeliveryApp.ViewModels
             {
                 App theApp = (App)Application.Current;
                 theApp.CurrentUser = user;
-
+                int ads = 2; 
                 App.Current.MainPage = new UserPage();
 
             }
 
 
-            #region dddddddddd
-            //    if (Email != "" && Password != "")
-            //    {
-            //        //ValidateForm();
-            //        if (ShowPasswordError)
-            //        {
-            //            await App.Current.MainPage.DisplayAlert("error", "Password Must be between 5-30 characters", "ok");
-            //        }
-            //        else
-            //        {
-            //            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-            //            User user = await proxy.LoginAsync(Email, Password);
-            //            if (user == null)
-            //            {
-
-            //                await App.Current.MainPage.DisplayAlert("error", "User not Logged In", "ok");
-            //            }
-            //            else
-            //            {
-            //                App theApp = (App)App.Current;
-            //                theApp.CurrentUser = user;
-
-            //                App.Current.MainPage = new UserPage();
-            //            }
-            //        }
-
-            //    }
-            //    else
-            //    {
-            //        await App.Current.MainPage.DisplayAlert("error", "Log In failed! you must fill email and password", "ok");
-
-            //    }
-
-            #endregion
         }
 
 

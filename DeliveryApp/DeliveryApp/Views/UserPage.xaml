@@ -4,21 +4,28 @@
              x:Class="DeliveryApp.Views.UserPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="HELLO," />
+            <Label FontSize="Header" Text="HELLO," />
 
             <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Label FontSize="Medium" Text="{Binding Username}" BackgroundColor="AntiqueWhite" ></Label>
+                <Label FontSize="Medium" Text="{Binding User.Username}" BackgroundColor="AntiqueWhite" ></Label>
             </Frame>
 
             <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Label FontSize="Medium" Text="{Binding Email}" BackgroundColor="AntiqueWhite" ></Label>
+                <Label FontSize="Medium" Text="{Binding User.Email}" BackgroundColor="AntiqueWhite" ></Label>
             </Frame>
 
 
             <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Label FontSize="Medium" Text="{Binding Address}" BackgroundColor="AntiqueWhite" ></Label>
+                <Label FontSize="Medium" Text="{Binding User.Address}" BackgroundColor="AntiqueWhite" ></Label>
             </Frame>
 
+            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                <Label FontSize="Medium" Text="{Binding User.PhoneNumber}" BackgroundColor="AntiqueWhite" ></Label>
+            </Frame>
+
+            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                <Label FontSize="Medium" Text="{Binding CreditCard}" BackgroundColor="AntiqueWhite" ></Label>
+            </Frame>
 
 
 

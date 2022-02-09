@@ -175,7 +175,7 @@ namespace DeliveryApp.ViewModels
         private void ValidateEmail()
         {
             if (!string.IsNullOrEmpty(Email))
-                this.ShowEmailError = !(Email.Contains("@") && Email.EndsWith(".com"));
+                this.ShowEmailError = Email.Contains("@") && Email.EndsWith(".com");
             else
                 this.ShowEmailError = true;
         }
@@ -185,10 +185,10 @@ namespace DeliveryApp.ViewModels
             ValidateEmail();
             ValidatePassword();
 
-            return !(ShowEmailError || ShowPasswordError);
+            return ShowEmailError && ShowPasswordError;
         }
  
-        public Command SignUpCommand { protected set; get; }
+        public ICommand SignUpCommand { protected set; get; }
 
         public async void OnRegister()
         {

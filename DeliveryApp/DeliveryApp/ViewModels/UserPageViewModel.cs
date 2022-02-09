@@ -20,81 +20,47 @@ namespace DeliveryApp.ViewModels
         }
         #endregion
 
-        private string email;
-        public string Email
-        {
-            get { return email; }
-            set
-            {
-                email = value;
-                OnPropertyChanged("Email");
-            }
-        }
+        #region props
+       
+        private string creditCard;
 
-        private string password;
-
-        public string Password
+        public string CreditCard
         {
-            get { return password; }
+            get { return creditCard; }
 
             set
             {
-                password = value;
-                OnPropertyChanged("Password");
+                creditCard = value;
+                creditCard = "************" + creditCard.Substring(12);
+                OnPropertyChanged("CreditCard");
             }
         }
 
-        private string lastName;
-        public string LastName
+        #endregion
+
+        private User user;
+        public User User
         {
-            get { return lastName; }
+            get { return user; }
             set
             {
-                lastName = value;
-                OnPropertyChanged("LastName");
+                if (user != value)
+                {
+                    user = value;
+                    OnPropertyChanged("User");
+                }
             }
         }
 
-        private string firstName;
-        public string FirstName
-        {
-            get { return firstName; }
-            set
-            {
-                firstName = value;
-                OnPropertyChanged("FirstName");
-            }
-        }
-        private string phoneNumber;
 
-        public string PhoneNumber
-        {
-            get { return phoneNumber; }
-
-            set
-            {
-                phoneNumber = value;
-                OnPropertyChanged("PhoneNumber");
-            }
-        }
-
-        private string address;
-
-        public string Address
-        {
-            get { return address; }
-
-            set
-            {
-                address = value;
-                OnPropertyChanged("Address");
-            }
-        }
 
         public ICommand ChangeCredentialCommand { protected set; get; }
 
         public UserPageViewModel()
         {
+            App theApp = (App)Application.Current;
+            User = new User(theApp.CurrentUser);
+            CreditCard = User.CreditCard;
             ChangeCredentialCommand = new Command(MoveChangeCredential);
         }
         public async void MoveChangeCredential()
@@ -108,7 +74,7 @@ namespace DeliveryApp.ViewModels
                 Page p = new NavigationPage(new Views.ChangeCredentialsPage());
                 App.Current.MainPage = p;
 
-                //d
+                
             }
             else
             {
