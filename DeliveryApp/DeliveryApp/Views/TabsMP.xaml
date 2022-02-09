@@ -5,7 +5,7 @@
             xmlns:local="clr-namespace:DeliveryApp.Views"
             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
             windows:TabbedPage.HeaderIconsEnabled="true"
-            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" xmlns:local1="clr-namespace:DeliveryApp"
             android:TabbedPage.ToolbarPlacement="Bottom"  
             >
   <!--Pages can be added as references or inline-->
@@ -20,7 +20,8 @@
     </windows:TabbedPage.HeaderIconsSize>
 
     <local:UserPage Title="User"></local:UserPage>
-    <local:ResMenuPage Title="Menu"></local:ResMenuPage>
+    <local1:delsoon Title="delsoon"></local1:delsoon>
+    <!--<local:ResMenuPage Title="Menu"></local:ResMenuPage>-->
 
 
 

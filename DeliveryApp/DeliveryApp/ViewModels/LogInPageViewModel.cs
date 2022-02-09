@@ -206,7 +206,8 @@ namespace DeliveryApp.ViewModels
                         App theApp = (App)Application.Current;
                         theApp.CurrentUser = user;
                         int ads = 2;
-                        App.Current.MainPage = new UserPage();
+                        //App.Current.MainPage = new UserPage();
+                        App.Current.MainPage = new TabsMP();
                     }
                 }
                 else
