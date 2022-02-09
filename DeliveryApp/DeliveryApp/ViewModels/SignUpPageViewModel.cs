@@ -168,14 +168,17 @@ namespace DeliveryApp.ViewModels
         private void ValidatePassword()
         {
             if (!string.IsNullOrEmpty(Password))
-                this.ShowPasswordError = Password.Length > 5 && Password.Length < 30;
+                this.ShowPasswordError = Password.Length < 5 && Password.Length > 30;
             else
                 this.showPasswordError = true;
         }
         private void ValidateEmail()
         {
             if (!string.IsNullOrEmpty(Email))
-                this.ShowEmailError = Email.Contains("@") && Email.EndsWith(".com");
+            {
+                this.ShowEmailError = true;
+                this.ShowEmailError = !(Email.Contains("@") && Email.EndsWith(".com"));
+            }
             else
                 this.ShowEmailError = true;
         }
@@ -185,7 +188,7 @@ namespace DeliveryApp.ViewModels
             ValidateEmail();
             ValidatePassword();
 
-            return ShowEmailError && ShowPasswordError;
+            return !(ShowEmailError || ShowPasswordError);
         }
  
         public ICommand SignUpCommand { protected set; get; }

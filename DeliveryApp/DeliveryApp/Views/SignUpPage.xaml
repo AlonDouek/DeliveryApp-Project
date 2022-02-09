@@ -47,7 +47,8 @@
 
 
                         <Button BackgroundColor="#29C529" Grid.Column="0" Grid.Row="12" Text="Submit" x:Name="SUBMIT" Command="{Binding SignUpCommand}"></Button>
-                        <!--idk please work i dont understad aaaaahhhhh-->
+
+
                     </Grid>
                 </StackLayout>
 

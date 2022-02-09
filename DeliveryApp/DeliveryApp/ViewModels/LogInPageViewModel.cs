@@ -71,8 +71,8 @@ namespace DeliveryApp.ViewModels
             set
             {
                 password = value;
-                ValidatePassword();
                 OnPropertyChanged("Password");
+                ValidatePassword();
             }
         }
 
@@ -105,7 +105,18 @@ namespace DeliveryApp.ViewModels
 
         #endregion
 
-       
+        
+        private string Error;
+
+        public string error
+        {
+            get => error;
+            set
+            {
+                error = value;
+                OnPropertyChanged("Error");
+            }
+        }
 
         private bool showError;
 
@@ -122,29 +133,33 @@ namespace DeliveryApp.ViewModels
 
         private void ValidatePassword()
         {
-            if(!string.IsNullOrEmpty(Password))
-                this.ShowPasswordError = Password.Length < 5 && Password.Length > 30;
+           
+            if (string.IsNullOrEmpty(Password) || (Password.Length < 5 || Password.Length > 30))
+            {
+                this.passwordError = "must type password between 5-30 character!";
+                this.ShowPasswordError = true;
+            }
             else
-                this.showPasswordError = true;
+            {
+                this.passwordError = "";
+                this.showPasswordError = false;
+            }
+                
         }
         private void ValidateEmail()
         {
-            if (!string.IsNullOrEmpty(Email))
+
+            if (string.IsNullOrEmpty(Email) || !(Email.Contains("@") && Email.EndsWith(".com")))
             {
-                try
-                {
-                    var VE = new System.Net.Mail.MailAddress(Email);
-                    this.ShowEmailError = VE.Address != Email;
-                }
-                catch
-                {
-                    this.ShowEmailError = true;
-                }
+                this.emailError = "must type correct Email";
+                this.ShowEmailError = true; 
             }
             else
-                this.ShowEmailError = true;
-           
-
+            {
+                this.emailError = "";
+                this.ShowEmailError = false;
+            }
+                
         }
 
         public ICommand SubmitCommand { protected set; get; }
@@ -152,9 +167,9 @@ namespace DeliveryApp.ViewModels
         public LogInPageViewModel()
         {
          
-            PasswordError = "must type password between 5-30 character!";
+            PasswordError = "";
             ShowPasswordError = false;
-            EmailError = "must type correct Email";
+            EmailError = "";
             ShowEmailError = false;
             SubmitCommand = new Command(OnSubmit);
         }
@@ -163,34 +178,49 @@ namespace DeliveryApp.ViewModels
         {
             if (((App)App.Current).CurrentUser != null)
             {
-                
+                error = "already logged in";
                 return false;
             }
 
             ValidateEmail();
             ValidatePassword();
 
-            return !(ShowEmailError || ShowPasswordError);
+            return !(ShowEmailError && ShowPasswordError);
         }
 
         public async void OnSubmit()
         {
-            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-            User user = await proxy.LoginAsync(Email, Password);
-
-            if (user == null)
+            try
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Login failed, please check and try again", "OK");
+                DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+                bool yep = ValidateForm();
+                if (yep)
+                {
+                    User user = await proxy.LoginAsync(Email, Password);
+                    if (user == null)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Error", "Login failed, please check and try again", "OK");
+                    }
+                    else
+                    {
+                        App theApp = (App)Application.Current;
+                        theApp.CurrentUser = user;
+                        int ads = 2;
+                        App.Current.MainPage = new UserPage();
+                    }
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Login Failed", "You did everything wrong", "Okay");
+                }
             }
-            else
+            catch(Exception e)
             {
-                App theApp = (App)Application.Current;
-                theApp.CurrentUser = user;
-                int ads = 2; 
-                App.Current.MainPage = new UserPage();
-
+                Console.WriteLine(e.Message);
             }
-
+            
+            
+            
 
         }
 
