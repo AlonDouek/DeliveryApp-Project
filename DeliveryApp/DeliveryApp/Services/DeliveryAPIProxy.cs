@@ -162,15 +162,26 @@ namespace DeliveryApp.Services
             }
         }
 
-        public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
+         public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
         {
             List<Restaurant> source = new List<Restaurant>();
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/ ");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/getRestaurants");
                 if (response.IsSuccessStatusCode)
                 {
-                    
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string Content = await response.Content.ReadAsStringAsync();
+                    List<Restaurant> so = JsonSerializer.Deserialize<List<Restaurant>>(Content, options);
+                    foreach (Restaurant m in so)
+                    {
+                        source.Add(m);
+                    }
+                    string g = "j";
+
                     return source;
                 }
                 else
@@ -180,9 +191,12 @@ namespace DeliveryApp.Services
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
 
+        
+        
     }
 }
