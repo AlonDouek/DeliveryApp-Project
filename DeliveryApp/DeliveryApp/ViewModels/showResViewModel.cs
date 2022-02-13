@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using DeliveryServer.Models;
+using System.Collections.ObjectModel;
 
 namespace DeliveryApp.ViewModels
 {
@@ -84,6 +86,9 @@ namespace DeliveryApp.ViewModels
 
 
         #endregion
+            
+        public ObservableCollection<Menu> menuList { get; }    
+            
         public showResViewModel()
         {
             
