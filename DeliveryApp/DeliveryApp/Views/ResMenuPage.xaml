@@ -6,18 +6,35 @@
         <StackLayout>
 
 
-            <CollectionView x:Name="Menu"   ItemsSource="{Binding }" SelectionMode="Single"
+            <CollectionView x:Name="Menu"   ItemsSource="{Binding ResList}" SelectionMode="Single"
                         SelectionChangedCommand="{Binding SelctionChanged}"
-                        SelectionChangedCommandParameter="{Binding Source={x:Reference collectionName}, Path=SelectedItem}">
-                
+                        SelectionChangedCommandParameter="{Binding Source={x:Reference ResList}, Path=SelectedItem}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Grid.Row="0"
+                                   Source="{Binding ImageUrl}"/>
+                            <Label Grid.Column="0" Grid.Row="1"
+                                   Text="{Binding Name}" 
+                                   FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                                   Text="{Binding des}" 
+                                   FontAttributes="Italic"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
             </CollectionView>
             
             
-            
-            
-            
-            
-            
+           
             
         </StackLayout>
     </ContentPage.Content>
