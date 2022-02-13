@@ -59,10 +59,13 @@ namespace DeliveryApp.ViewModels
             {
                 Restaurant choice = (Restaurant)obj;
                 Page resPage = new ShowRes();
-                //ShowResViewModel Context = new ShowResViewModel
-                //{
-
-                //};
+                ShowResViewModel Context = new ShowResViewModel
+                {
+                    Name = choice.Name,
+                    Description = choice.Description,
+                    OpeningHours  = choice.OpeningHours,
+                    ClosingHours = choice.ClosingHours
+                };
                 //resPage.BindingContext = Context;
                 //resPage.Title = Context.Name;
                 //if (NavigateToPageEvent != null)
