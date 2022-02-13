@@ -167,28 +167,43 @@ namespace DeliveryApp.ViewModels
         //fix validation
         private void ValidatePassword()
         {
-            if (!string.IsNullOrEmpty(Password))
-                this.ShowPasswordError = Password.Length < 5 && Password.Length > 30;
+            if (string.IsNullOrEmpty(Password) || (Password.Length < 5 || Password.Length > 30))
+            {
+                this.passwordError = "must type password between 5-30 character!";
+                this.ShowPasswordError = true;
+            }
             else
-                this.showPasswordError = true;
+            {
+                this.passwordError = "";
+                this.showPasswordError = false;
+            }
         }
         private void ValidateEmail()
         {
-            if (!string.IsNullOrEmpty(Email))
+            if (string.IsNullOrEmpty(Email) || !(Email.Contains("@") && Email.EndsWith(".com")))
             {
+                this.emailError = "must type correct Email";
                 this.ShowEmailError = true;
-                this.ShowEmailError = !(Email.Contains("@") && Email.EndsWith(".com"));
             }
             else
-                this.ShowEmailError = true;
+            {
+                this.emailError = "";
+                this.ShowEmailError = false;
+            }
         }
 
         private bool ValidateForm()
         {
+            if (((App)App.Current).CurrentUser != null)
+            {
+                
+                return false;
+            }
+
             ValidateEmail();
             ValidatePassword();
 
-            return !(ShowEmailError || ShowPasswordError);
+            return !(ShowEmailError && ShowPasswordError);
         }
  
         public ICommand SignUpCommand { protected set; get; }
