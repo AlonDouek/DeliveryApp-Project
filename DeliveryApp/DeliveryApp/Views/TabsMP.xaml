@@ -21,8 +21,7 @@
 
     <local:UserPage Title="User"></local:UserPage>
     <local1:delsoon Title="delsoon"></local1:delsoon>
-    <!--<local:ResMenuPage Title="Menu"></local:ResMenuPage> --><!-- fix this up -->
-
+    <local:ResMenuPage Title="Menu"></local:ResMenuPage>  <!--fix this up--> 
 
 
 </TabbedPage>
