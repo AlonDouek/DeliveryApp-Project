@@ -103,66 +103,62 @@ namespace DeliveryApp.Services
                 return null;
             }
         }
-       
-        public async Task<User> SignUpAsync(User u)
+        #region brrrrrrrrr
+        //public async Task<User> SignUpAsync(User u)
+        //{
+        //    try
+        //    {
+        //        HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/SignUp?Username={u.Username}&Password={u.Password}&Email={u.Email}&Address={u.Address}&PhoneNumber={u.PhoneNumber}&CreditCard={u.CreditCard}");
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            JsonSerializerOptions options = new JsonSerializerOptions
+        //            {
+        //                PropertyNameCaseInsensitive = true
+        //            };
+        //            string content = await response.Content.ReadAsStringAsync();
+        //            User p = JsonSerializer.Deserialize<User>(content, options);
+        //            return p;
+        //        }
+        //        else
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //        return null;
+        //    }
+        //}
+        #endregion
+        public async Task<bool> SignUpAsync(User user)
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/SignUp?Username={u.Username}&Password={u.Password}&Email={u.Email}&Address={u.Address}&PhoneNumber={u.PhoneNumber}&CreditCard={u.CreditCard}");
+                string userJson = JsonSerializer.Serialize(user);
+                StringContent userJsonContent = new StringContent(userJson, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/DeliveryAPI/SignUp", userJsonContent);
                 if (response.IsSuccessStatusCode)
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
                     {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
                         PropertyNameCaseInsensitive = true
                     };
                     string content = await response.Content.ReadAsStringAsync();
-                    User p = JsonSerializer.Deserialize<User>(content, options);
-                    return p;
+                    bool Success = JsonSerializer.Deserialize<bool>(content, options);
+                    return Success;
                 }
                 else
-                {
-                    return null;
-                }
+                    return false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                return null;
+                return false;
             }
         }
 
-        public async Task<User> TEMPSignUpAsync(User u)
-        {
-            try
-            {
-                JsonSerializerOptions options = new JsonSerializerOptions
-                {
-                    ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
-                    PropertyNameCaseInsensitive = true
-                };
-                string jsonObject = JsonSerializer.Serialize(u, options);
-                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/DeliveryAPI/SignUp", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    string respContent = await response.Content.ReadAsStringAsync();
-                    User user = JsonSerializer.Deserialize<User>(respContent);
-                    return user;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
-        }
-
-         public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
+        public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
         {
             List<Restaurant> source = new List<Restaurant>();
             try

@@ -164,7 +164,7 @@ namespace DeliveryApp.ViewModels
             ShowEmailError = false;
             this.SignUpCommand = new Command(() => OnRegister());
         }
-        //fix validation
+         
         private void ValidatePassword()
         {
             if (string.IsNullOrEmpty(Password) || (Password.Length < 5 || Password.Length > 30))
@@ -210,34 +210,39 @@ namespace DeliveryApp.ViewModels
 
         public async void OnRegister()
         {
-
-            if (ValidateForm())
+            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+            try
             {
-                DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-                User u = new User
-                {
-                    Email = Email,
-                    Password = Password,
-                    Username = Username,
-                    Address = Address,
-                    CreditCard = CreditCard,
-                    PhoneNumber = PhoneNumber
-                };
-
-                User user = await proxy.SignUpAsync(u);
-
-                if(user != null)
-                {
-                    App theApp = (App)App.Current;
-                    theApp.CurrentUser = user;
-
-                    App.Current.MainPage = new UserPage();
-                }
-                else
+                bool check = ValidateForm();
+                if (!check)
                 {
                     await App.Current.MainPage.DisplayAlert("Error", "sign up failed, please check and try again", "OK");
                 }
+                else
+                {
+                    User u = new User
+                    {
+                        Email = Email,
+                        Password = Password,
+                        Username = Username,
+                        Address = Address,
+                        CreditCard = CreditCard,
+                        PhoneNumber = PhoneNumber
+                    };
+
+                    bool signUp = await proxy.SignUpAsync(u);
+                    if (signUp)
+                        App.Current.MainPage = new LogInPage();
+                    else
+                        await App.Current.MainPage.DisplayAlert("Error", "something went wrong, please try again", "OK");
+
+                }
             }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+           
         }
 
     }
