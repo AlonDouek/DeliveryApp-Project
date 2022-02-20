@@ -154,10 +154,20 @@ namespace DeliveryApp.ViewModels
         #endregion
         #endregion
 
+        private string error;
+        public string Error
+        {
+            get => error;
+            set
+            {
+                error = value;
+                OnPropertyChanged(Error);
+            }
+        }
 
         public SignUpPageViewModel()
         {
-          
+            Error = "";
             PasswordError = "must type password";
             ShowPasswordError = false;
             EmailError = "must type correct Email";
@@ -167,6 +177,7 @@ namespace DeliveryApp.ViewModels
          
         private void ValidatePassword()
         {
+            int breakP = 0;
             if (string.IsNullOrEmpty(Password) || (Password.Length < 5 || Password.Length > 30))
             {
                 this.passwordError = "must type password between 5-30 character!";
@@ -180,6 +191,7 @@ namespace DeliveryApp.ViewModels
         }
         private void ValidateEmail()
         {
+            int breakP = 0;
             if (string.IsNullOrEmpty(Email) || !(Email.Contains("@") && Email.EndsWith(".com")))
             {
                 this.emailError = "must type correct Email";
@@ -194,6 +206,8 @@ namespace DeliveryApp.ViewModels
 
         private bool ValidateForm()
         {
+            this.Error = "";
+            int breakP = 0;
             if (((App)App.Current).CurrentUser != null)
             {
                 
@@ -203,9 +217,11 @@ namespace DeliveryApp.ViewModels
             ValidateEmail();
             ValidatePassword();
 
-            return !(ShowEmailError && ShowPasswordError);
+            this.Error += this.EmailError + this.passwordError + ", please check and try again";
+            return !((ShowEmailError && ShowPasswordError) || (ShowEmailError || ShowPasswordError));
+
         }
- 
+
         public ICommand SignUpCommand { protected set; get; }
 
         public async void OnRegister()
@@ -216,7 +232,7 @@ namespace DeliveryApp.ViewModels
                 bool check = ValidateForm();
                 if (!check)
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", "sign up failed, please check and try again", "OK");
+                    await App.Current.MainPage.DisplayAlert("Error", Error , "OK");
                 }
                 else
                 {
@@ -234,7 +250,7 @@ namespace DeliveryApp.ViewModels
                     if (signUp)
                         App.Current.MainPage = new LogInPage();
                     else
-                        await App.Current.MainPage.DisplayAlert("Error", "something went wrong, please try again", "OK");
+                        await App.Current.MainPage.DisplayAlert("Error", "everything went completly wrong!, please try again", "OK");
 
                 }
             }

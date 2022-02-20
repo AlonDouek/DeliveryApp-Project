@@ -106,15 +106,15 @@ namespace DeliveryApp.ViewModels
         #endregion
 
         
-        private string Error;
+        private string error;
 
-        public string error
+        public string Error
         {
-            get => error;
+            get => Error;
             set
             {
-                error = value;
-                OnPropertyChanged("Error");
+                Error = value;
+                OnPropertyChanged("error");
             }
         }
 
@@ -185,7 +185,7 @@ namespace DeliveryApp.ViewModels
             ValidateEmail();
             ValidatePassword();
 
-            return !(ShowEmailError && ShowPasswordError);
+            return !((ShowEmailError && ShowPasswordError) || (ShowEmailError || ShowPasswordError));
         }
 
         public async void OnSubmit()
