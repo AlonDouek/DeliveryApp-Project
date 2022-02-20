@@ -9,7 +9,7 @@
                     <Frame BackgroundColor="AliceBlue" >
                         <Label FontSize="Caption" Text="Sign Up" />
                     </Frame>
-                    <Grid BackgroundColor="Ivory">
+                    <Grid BackgroundColor="Ivory"> 
 
                         <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="0" TextColor="Gray"/>
                         <Frame CornerRadius="6" Grid.Column="0" Grid.Row="1" BackgroundColor="LightGoldenrodYellow" >
