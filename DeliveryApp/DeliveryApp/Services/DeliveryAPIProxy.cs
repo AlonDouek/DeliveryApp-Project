@@ -157,6 +157,38 @@ namespace DeliveryApp.Services
                 return false;
             }
         }
+        public async Task<bool> ChangeCredentialsAsync(string CuserEmail,User Nuser)
+        {
+            try
+            {
+                ChangeDTO changeDTO = new ChangeDTO(CuserEmail, Nuser);
+                    
+                string changeDTOJson = JsonSerializer.Serialize(changeDTO);
+                StringContent changeDTOContent = new StringContent(changeDTOJson, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/DeliveryAPI/ChangeCredentials", changeDTOContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    bool Success = JsonSerializer.Deserialize<bool>(content, options);
+                    return Success;
+                }
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+
+
 
         public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
         {
