@@ -1,8 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using Xamarin.Forms;
 
-
-namespace DeliveryServer.Models
+namespace DeliveryApp.Models
 {
     public partial class OrderItem
     {

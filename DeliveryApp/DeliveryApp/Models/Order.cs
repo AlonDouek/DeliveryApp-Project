@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace DeliveryServer.Models
+namespace DeliveryApp.Models
 {
     public partial class Order
     {
