@@ -16,11 +16,10 @@ namespace DeliveryApp.Models
         public string Username { get; set; }
         public string Password { get; set; }
         public string Address { get; set; }
-        public int PhoneNumber { get; set; }
-        public int CreditCard { get; set; }
+        public string PhoneNumber { get; set; }
+        public string CreditCard { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
-
 
         public User(string Email, string UN, string ps, string Address, string PhoneNumber, string CreditCard)
         {
@@ -28,7 +27,7 @@ namespace DeliveryApp.Models
             this.Username = UN;
             this.Password = ps;
             this.Address = Address;
-            this.PhoneNumber = PhoneNumber; //CHANGE/FIX LATER WITH DATABASE SHIT I WANNA DIE
+            this.PhoneNumber = PhoneNumber; 
             this.CreditCard = CreditCard;
 
         }
@@ -43,5 +42,6 @@ namespace DeliveryApp.Models
             this.CreditCard = u.CreditCard;
 
         }
+
     }
 }
