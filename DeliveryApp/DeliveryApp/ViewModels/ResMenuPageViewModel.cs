@@ -1,7 +1,6 @@
-﻿using DeliveryApp.Services;
+﻿using DeliveryApp.Models;
+using DeliveryApp.Services;
 using DeliveryApp.Views;
-using DeliveryServer.Models;
-
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

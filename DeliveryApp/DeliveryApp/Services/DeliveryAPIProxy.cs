@@ -11,7 +11,6 @@ using System.Text.Encodings.Web;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.IO;
-using DeliveryServer.Models;
 using DeliveryApp.DTO;
 
 namespace DeliveryApp.Services

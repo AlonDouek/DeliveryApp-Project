@@ -3,7 +3,6 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using DeliveryApp.Views;
-using DeliveryServer.Models;
 
 namespace DeliveryApp
 {

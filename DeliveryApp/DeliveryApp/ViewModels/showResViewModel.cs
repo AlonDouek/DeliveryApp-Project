@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
-using DeliveryServer.Models;
+using DeliveryApp.Models;
 using System.Collections.ObjectModel;
 
 namespace DeliveryApp.ViewModels

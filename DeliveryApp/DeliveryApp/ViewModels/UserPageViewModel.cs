@@ -1,6 +1,5 @@
 ﻿using DeliveryApp.Models;
 using DeliveryApp.Services;
-using DeliveryServer.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
