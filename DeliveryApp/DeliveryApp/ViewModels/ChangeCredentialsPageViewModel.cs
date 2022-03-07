@@ -21,6 +21,8 @@ namespace DeliveryApp.ViewModels
         #endregion
 
         #region props
+        private User CurrentUser;
+
         private string email;
         public string Email
         {
@@ -32,17 +34,7 @@ namespace DeliveryApp.ViewModels
             }
         }
 
-        private string email2;
-        public string Email2
-        {
-            get { return email2; }
-            set
-            {
-                email2 = value;
-                OnPropertyChanged("Email2");
-            }
-        }
-
+        
         private string username;
         public string Username
         {
@@ -185,12 +177,12 @@ namespace DeliveryApp.ViewModels
         private void ValidateEmail()
         {
             int breakP = 0;
-            if ((!(Email.Contains("@") && Email.EndsWith(".com")) && !(Email2.Contains("@") && Email2.EndsWith(".com"))) || (!(Email.Contains("@") && Email.EndsWith(".com")) || !(Email2.Contains("@") && Email2.EndsWith(".com"))))
+            if ((!(Email.Contains("@") && Email.EndsWith(".com"))))
             {
                 this.emailError = "Email must be typed Correctly ";
                 this.ShowEmailError = true;
             }
-            else if ((string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Email2)) || (string.IsNullOrEmpty(Email) && string.IsNullOrEmpty(Email2)))
+            else if ((string.IsNullOrEmpty(Email)))
             {
                 this.emailError = "must type Email ";
                 this.ShowEmailError = true;
@@ -223,6 +215,7 @@ namespace DeliveryApp.ViewModels
 
         public ChangeCredentialsPageViewModel()
         {
+            CurrentUser = ((App)App.Current).CurrentUser;
             Error = "";
             PasswordError = "must type password";
             ShowPasswordError = false;
@@ -243,11 +236,11 @@ namespace DeliveryApp.ViewModels
                 else
                 {
                     App theApp = (App)App.Current;
-                    User Cu = new User(theApp.CurrentUser);
+                    User Current = theApp.CurrentUser;
 
                     User Nu = new User
                     {
-                        Email = Email2,
+                        Email = Email,
                         Password = Password,
                         Username = Username,
                         Address = Address,
@@ -255,12 +248,18 @@ namespace DeliveryApp.ViewModels
                         PhoneNumber = PhoneNumber
                     };
 
-                    bool signUp = await proxy.ChangeCredentialsAsync(Email,Nu);
+                    bool signUp = await proxy.ChangeCredentialsAsync(Current.Email,Email,Password,Username,Address,CreditCard,PhoneNumber);
                     if (signUp)
                         App.Current.MainPage = new TEMPVIEW1();
                     else
                         await App.Current.MainPage.DisplayAlert("Error", "everything went completly wrong!, please try again", "OK");
 
+                    //bool updateProfileSuccess = await proxy.UpdateProfile(Email, Username, Name, Age);
+                    //if (updateProfileSuccess)
+                    //{
+                    //    Account.AccountName = Name;
+                    //    Account.Age = Age;
+                    //}
                 }
 
             }

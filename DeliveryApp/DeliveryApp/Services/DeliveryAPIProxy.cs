@@ -156,33 +156,26 @@ namespace DeliveryApp.Services
                 return false;
             }
         }
-        public async Task<bool> ChangeCredentialsAsync(string CuserEmail,User Nuser)
+        public async Task<bool> ChangeCredentialsAsync(string CuserEmail,string Email,string Password,string Username,string Address,string CreditCard,string PhoneNumber)
         {
             try
             {
-                ChangeDTO changeDTO = new ChangeDTO(CuserEmail, Nuser);
-                    
-                string changeDTOJson = JsonSerializer.Serialize(changeDTO);
-                StringContent changeDTOContent = new StringContent(changeDTOJson, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/DeliveryAPI/ChangeCredentials", changeDTOContent);
-                if (response.IsSuccessStatusCode)
-                {
-                    JsonSerializerOptions options = new JsonSerializerOptions
-                    {
-                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
-                        PropertyNameCaseInsensitive = true
-                    };
-                    string content = await response.Content.ReadAsStringAsync();
-                    bool Success = JsonSerializer.Deserialize<bool>(content, options);
-                    return Success;
-                }
-                else
-                    return false;
+                string url = Uri.EscapeUriString($"{this.baseUri}/DeliveryAPI/ChangeCredentials?CUEmail={CuserEmail}&Email={Email}&Username={Username}&Address={Address}&CreditCard={CreditCard}&PhoneNumber={PhoneNumber}");
+                HttpResponseMessage response = await this.client.GetAsync(url);
+                return response.IsSuccessStatusCode;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return false;
             }
+            
+            
+                
+                
+                
+
+            
+            
         }
 
 

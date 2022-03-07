@@ -21,13 +21,16 @@ namespace DeliveryApp.Models
 
         public virtual ICollection<Order> Orders { get; set; }
 
+
+
+
         public User(string Email, string UN, string ps, string Address, string PhoneNumber, string CreditCard)
         {
             this.Email = Email;
             this.Username = UN;
             this.Password = ps;
             this.Address = Address;
-            this.PhoneNumber = PhoneNumber; 
+            this.PhoneNumber = PhoneNumber;
             this.CreditCard = CreditCard;
 
         }
@@ -42,6 +45,5 @@ namespace DeliveryApp.Models
             this.CreditCard = u.CreditCard;
 
         }
-
     }
 }
