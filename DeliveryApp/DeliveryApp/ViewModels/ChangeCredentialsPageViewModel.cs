@@ -197,7 +197,7 @@ namespace DeliveryApp.ViewModels
         {
             this.Error = "";
             int breakP = 0;
-            if (((App)App.Current).CurrentUser != null)
+            if (((App)App.Current).CurrentUser == null)
             {
 
                 return false;
@@ -237,16 +237,6 @@ namespace DeliveryApp.ViewModels
                 {
                     App theApp = (App)App.Current;
                     User Current = theApp.CurrentUser;
-
-                    User Nu = new User
-                    {
-                        Email = Email,
-                        Password = Password,
-                        Username = Username,
-                        Address = Address,
-                        CreditCard = CreditCard,
-                        PhoneNumber = PhoneNumber
-                    };
 
                     bool signUp = await proxy.ChangeCredentialsAsync(Current.Email,Email,Password,Username,Address,CreditCard,PhoneNumber);
                     if (signUp)

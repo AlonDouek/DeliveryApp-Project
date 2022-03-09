@@ -160,7 +160,7 @@ namespace DeliveryApp.Services
         {
             try
             {
-                string url = Uri.EscapeUriString($"{this.baseUri}/DeliveryAPI/ChangeCredentials?CUEmail={CuserEmail}&Email={Email}&Username={Username}&Address={Address}&CreditCard={CreditCard}&PhoneNumber={PhoneNumber}");
+                string url = Uri.EscapeUriString($"{this.baseUri}/DeliveryAPI/ChangeCredentials?CUEmail={CuserEmail}&Password={Password}&Email={Email}&Username={Username}&Address={Address}&CreditCard={CreditCard}&PhoneNumber={PhoneNumber}");
                 HttpResponseMessage response = await this.client.GetAsync(url);
                 return response.IsSuccessStatusCode;
             }
