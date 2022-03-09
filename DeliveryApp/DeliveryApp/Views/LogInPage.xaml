@@ -3,40 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DeliveryApp.Views.LogInPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Frame BackgroundColor="AliceBlue" >
-                <Label FontSize="Caption" Text="Log In" />
-            </Frame>
-            
- 
-                
-
-            <Label FontSize="Small" Text="Email" TextColor="Gray"></Label>
-            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Entry FontSize="Medium" Text="{Binding Email}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Email" ></Entry>
-            </Frame>
-            <Label Text="{Binding EmailError}" IsVisible="{Binding ShowEmailError}" TextColor="Red" />
-
-
-            <Label FontSize="Small" Text="Password" TextColor="Gray"/>
-            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Entry FontSize="Medium" IsPassword="True" Text="{Binding Password}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password"></Entry>
-            </Frame>
-            <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" TextColor="Red" />
+        <ScrollView>
+            <StackLayout>
+                <Frame BackgroundColor="AliceBlue" >
+                    <Label FontSize="Caption" Text="Log In" />
+                </Frame>
 
 
 
 
+                <Label FontSize="Small" Text="Email" TextColor="Gray"></Label>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                    <Entry FontSize="Medium" Text="{Binding Email}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Email" ></Entry>
+                </Frame>
+                <Label Text="{Binding EmailError}" IsVisible="{Binding ShowEmailError}" TextColor="Red" />
 
-            <Button BackgroundColor="#29C529" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
+
+                <Label FontSize="Small" Text="Password" TextColor="Gray"/>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                    <Entry FontSize="Medium" IsPassword="True" Text="{Binding Password}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password"></Entry>
+                </Frame>
+                <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" TextColor="Red" />
+
+
+
+
+
+                <Button BackgroundColor="#29C529" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
                 <!--do this in some other time bruv-->
                 <!--<Label Text="OR" FontSize="Large"  HorizontalOptions="Center" />-->
                 <!--<Button BackgroundColor="#DC0E0E" Text="forgot password?" x:Name="forpass"></Button> -->
-            <Button BackgroundColor="#29C529"  Text="Don't have an account? Sign up" Clicked="SignUp"/>
+                <Button BackgroundColor="#29C529"  Text="Don't have an account? Sign up" Clicked="SignUp"/>
 
 
 
-            
-        </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

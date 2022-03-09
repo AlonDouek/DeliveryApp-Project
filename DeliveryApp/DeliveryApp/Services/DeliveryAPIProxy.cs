@@ -168,19 +168,25 @@ namespace DeliveryApp.Services
             {
                 return false;
             }
-            
-            
-                
-                
-                
 
-            
-            
+
         }
 
+        public async Task<bool> LogoutAsync()
+        {
+            try
+            {
+                string url = Uri.EscapeUriString($"{this.baseUri}/DeliveryAPI/Logout");
+                HttpResponseMessage response = await this.client.GetAsync(url);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
 
 
-
+        }
 
         public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
         {

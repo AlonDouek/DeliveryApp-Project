@@ -3,52 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DeliveryApp.Views.UserPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label FontSize="Header" Text="HELLO," />
+        <ScrollView>
+            <StackLayout>
+                <Label FontSize="Title" Text="HELLO," />
 
-            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Label FontSize="Medium" Text="{Binding User.Username}" BackgroundColor="AntiqueWhite" ></Label>
-            </Frame>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                    <Label FontSize="Medium" Text="{Binding User.Username}" BackgroundColor="AntiqueWhite" ></Label>
+                </Frame>
 
-            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Label FontSize="Medium" Text="{Binding User.Email}" BackgroundColor="AntiqueWhite" ></Label>
-            </Frame>
-
-
-            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Label FontSize="Medium" Text="{Binding User.Address}" BackgroundColor="AntiqueWhite" ></Label>
-            </Frame>
-
-            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Label FontSize="Medium" Text="{Binding User.PhoneNumber}" BackgroundColor="AntiqueWhite" ></Label>
-            </Frame>
-
-            <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                <Label FontSize="Medium" Text="{Binding CreditCard}" BackgroundColor="AntiqueWhite" ></Label>
-            </Frame>
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                    <Label FontSize="Medium" Text="{Binding User.Email}" BackgroundColor="AntiqueWhite" ></Label>
+                </Frame>
 
 
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                    <Label FontSize="Medium" Text="{Binding User.Address}" BackgroundColor="AntiqueWhite" ></Label>
+                </Frame>
+
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                    <Label FontSize="Medium" Text="{Binding User.PhoneNumber}" BackgroundColor="AntiqueWhite" ></Label>
+                </Frame>
+
+                <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
+                    <Label FontSize="Medium" Text="{Binding CreditCard}" BackgroundColor="AntiqueWhite" ></Label>
+                </Frame>
 
 
+                <Button Text="change credentials" Command="{Binding ChangeCredentialCommand}"></Button>
+
+                <Button Text="Log Out" BackgroundColor="Firebrick" Command="{Binding LogoutCommand}"></Button>
 
 
-
-            <Button Text="change credentials" Command="{Binding ChangeCredentialCommand}"></Button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

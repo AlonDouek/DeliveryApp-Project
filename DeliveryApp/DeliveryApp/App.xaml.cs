@@ -26,7 +26,10 @@ namespace DeliveryApp
 
             MainPage = new NavigationPage(new LogInPage());//MainPage();
         }
-        
+        public void NullCurrentUser()
+        {
+            CurrentUser = null;
+        }
         protected override void OnStart()
         {
         }
