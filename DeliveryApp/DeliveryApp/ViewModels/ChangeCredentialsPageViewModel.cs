@@ -266,7 +266,6 @@ namespace DeliveryApp.ViewModels
                     else
                         await App.Current.MainPage.DisplayAlert("Error", "everything went completly wrong!, please try again", "OK");
 
-                    
                 }
 
             }
