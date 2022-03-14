@@ -266,12 +266,7 @@ namespace DeliveryApp.ViewModels
                     else
                         await App.Current.MainPage.DisplayAlert("Error", "everything went completly wrong!, please try again", "OK");
 
-                    //bool updateProfileSuccess = await proxy.UpdateProfile(Email, Username, Name, Age);
-                    //if (updateProfileSuccess)
-                    //{
-                    //    Account.AccountName = Name;
-                    //    Account.Age = Age;
-                    //}
+                    
                 }
 
             }
@@ -284,6 +279,6 @@ namespace DeliveryApp.ViewModels
 
 
 
-        //}
+        
     }
 }

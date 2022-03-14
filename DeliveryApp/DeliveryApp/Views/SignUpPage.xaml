@@ -47,6 +47,7 @@
 
 
                         <Button BackgroundColor="#29C529" Grid.Column="0" Grid.Row="12" Text="Submit" x:Name="SUBMIT" Command="{Binding SignUpCommand}"></Button>
+                        <Button BackgroundColor="#29C529" Grid.Column="0" Grid.Row="13" Text="Go Back" x:Name="Back" Command="{Binding GoBack}"></Button>
 
 
                     </Grid>

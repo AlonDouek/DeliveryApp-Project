@@ -172,8 +172,19 @@ namespace DeliveryApp.ViewModels
             EmailError = "must type correct Email";
             ShowEmailError = false;
             this.SignUpCommand = new Command(() => OnRegister());
+            GoBack = new Command(OnBackClick);
         }
-         
+        public async void OnBackClick()
+        {
+            try
+            {
+                await App.Current.MainPage.Navigation.PushModalAsync(new Views.LogInPage());
+            }
+            catch
+            {
+                await App.Current.MainPage.DisplayAlert("error", "that wasnt suppose to happen Hhmmm...", "ok");
+            }
+        }
         private void ValidatePassword()
         {
             int breakP = 0;
@@ -220,8 +231,9 @@ namespace DeliveryApp.ViewModels
             return !((ShowEmailError && ShowPasswordError) || (ShowEmailError || ShowPasswordError));
 
         }
-
+        
         public ICommand SignUpCommand { protected set; get; }
+        public ICommand GoBack { protected set; get; }
 
         public async void OnRegister()
         {

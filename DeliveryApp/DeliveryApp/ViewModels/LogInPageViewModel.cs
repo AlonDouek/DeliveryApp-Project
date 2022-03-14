@@ -162,7 +162,7 @@ namespace DeliveryApp.ViewModels
         }
 
         public ICommand SubmitCommand { protected set; get; }
-
+        public ICommand Move2SignUp { protected set; get; }
         public LogInPageViewModel()
         {
          
@@ -171,6 +171,7 @@ namespace DeliveryApp.ViewModels
             EmailError = "";
             ShowEmailError = false;
             SubmitCommand = new Command(OnSubmit);
+            Move2SignUp = new Command(OnSignUpClick);
         }
 
         private bool ValidateForm()
@@ -187,6 +188,17 @@ namespace DeliveryApp.ViewModels
             return !((ShowEmailError && ShowPasswordError) || (ShowEmailError || ShowPasswordError));
         }
 
+        public async void OnSignUpClick()
+        {
+            try
+            {
+                await App.Current.MainPage.Navigation.PushModalAsync(new Views.SignUpPage());
+            }
+            catch
+            {
+                await App.Current.MainPage.DisplayAlert("error", "that wasnt suppose to happen Hhmmm...", "ok");
+            }
+        }
         public async void OnSubmit()
         {
             try
@@ -227,6 +239,6 @@ namespace DeliveryApp.ViewModels
 
 
     }
-    }
+}
 
 

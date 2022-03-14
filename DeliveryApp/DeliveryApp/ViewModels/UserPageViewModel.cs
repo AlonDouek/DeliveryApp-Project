@@ -62,7 +62,7 @@ namespace DeliveryApp.ViewModels
             User = ((App)App.Current).CurrentUser;
             CreditCard = User.CreditCard;
             ChangeCredentialCommand = new Command(MoveChangeCredential);
-            //LogoutCommand = new Command(Logout);
+            LogoutCommand = new Command(Logout);
         }
         public async void MoveChangeCredential()
         {
@@ -86,30 +86,30 @@ namespace DeliveryApp.ViewModels
         }
         #region fff
 
-        //public async void Logout()
-        //{
-        //    try
-        //    {
-        //        DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-        //        if (User != null)
-        //        {
-        //            App App = (App)Application.Current;
-        //            App.NullCurrentUser();
+        public async void Logout()
+        {
+            try
+            {
+                DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+                if (User != null)
+                {
+                    App App = (App)Application.Current;
+                    App.NullCurrentUser();
 
-        //            bool signUp = await proxy.LogoutAsync();
+                    //bool sp = await proxy.LogoutAsync();
 
-        //            User a = ((App)App.Current).CurrentUser;
-        //            int ssd = 0;
-        //            if (signUp)
-        //                await App.Current.MainPage.Navigation.PushModalAsync(new Views.LogInPage());
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        await App.Current.MainPage.DisplayAlert("error", "that wasnt suppose to happen Hhmmm...", "ok");
-        //    }
-            
-        //}
+                    //User a = ((App)App.Current).CurrentUser;
+                    //int ssd = 0;
+                    
+                    await App.Current.MainPage.Navigation.PushModalAsync(new Views.LogInPage());
+                }
+            }
+            catch
+            {
+                await App.Current.MainPage.DisplayAlert("error", "that wasnt suppose to happen Hhmmm...", "ok");
+            }
+
+        }
 
         #endregion
     }

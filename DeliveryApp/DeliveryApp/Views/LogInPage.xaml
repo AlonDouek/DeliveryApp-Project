@@ -32,8 +32,8 @@
                 <Button BackgroundColor="#29C529" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
                 <!--do this in some other time bruv-->
                 <!--<Label Text="OR" FontSize="Large"  HorizontalOptions="Center" />-->
-                <!--<Button BackgroundColor="#DC0E0E" Text="forgot password?" x:Name="forpass"></Button> -->
-                <Button BackgroundColor="#29C529"  Text="Don't have an account? Sign up" Clicked="SignUp"/>
+                <!--<Button BackgroundColor="#DC0E0E" Text="forgot password?" x:Name="forpass"></Button> Clicked="SignUp" -->
+                <Button BackgroundColor="#29C529"  Text="Don't have an account? Sign up" Command="{Binding Move2SignUp}" />
 
 
 
