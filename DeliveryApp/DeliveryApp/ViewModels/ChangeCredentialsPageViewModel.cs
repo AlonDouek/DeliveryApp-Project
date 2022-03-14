@@ -262,7 +262,7 @@ namespace DeliveryApp.ViewModels
 
                     Current = theApp.CurrentUser;
                     if (signUp)
-                        App.Current.MainPage = new TEMPVIEW1();
+                        App.Current.MainPage = new UserPage();
                     else
                         await App.Current.MainPage.DisplayAlert("Error", "everything went completly wrong!, please try again", "OK");
 
