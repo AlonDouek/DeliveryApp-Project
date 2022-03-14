@@ -172,21 +172,24 @@ namespace DeliveryApp.Services
 
         }
 
-        public async Task<bool> LogoutAsync()
-        {
-            try
-            {
-                string url = Uri.EscapeUriString($"{this.baseUri}/DeliveryAPI/Logout");
-                HttpResponseMessage response = await this.client.GetAsync(url);
-                return response.IsSuccessStatusCode;
-            }
-            catch (Exception e)
-            {
-                return false;
-            }
+        #region fff
+        //public async Task<bool> LogoutAsync()
+        //{
+        //    try
+        //    {
+        //        string url = Uri.EscapeUriString($"{this.baseUri}/DeliveryAPI/Logout");
+        //        HttpResponseMessage response = await this.client.GetAsync(url);
+        //        return response.IsSuccessStatusCode;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return false;
+        //    }
 
 
-        }
+        //}
+        #endregion
+
 
         public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
         {

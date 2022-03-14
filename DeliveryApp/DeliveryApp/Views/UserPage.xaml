@@ -31,8 +31,9 @@
 
                 <Button Text="change credentials" Command="{Binding ChangeCredentialCommand}"></Button>
 
-                <Button Text="Log Out" BackgroundColor="Firebrick" Command="{Binding LogoutCommand}"></Button>
-
+                <Button Text="Log Out" BackgroundColor="Firebrick" Clicked="LogIn" ></Button>
+                
+                <!--Command="{Binding LogoutCommand}"-->
 
             </StackLayout>
         </ScrollView>

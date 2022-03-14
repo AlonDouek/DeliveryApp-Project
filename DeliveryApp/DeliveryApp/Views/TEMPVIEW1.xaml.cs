@@ -18,7 +18,7 @@ namespace DeliveryApp.Views
         }
         private void goToU(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new UserPage());
+            App.Current.MainPage = new UserPage();
         }
     }
 }

@@ -163,7 +163,12 @@ namespace DeliveryApp.ViewModels
         private void ValidatePassword()
         {
             int breakP = 0;
-            if (Password.Length < 5 || Password.Length > 30)
+            if(string.IsNullOrEmpty(Password))
+            {
+                this.passwordError = "";
+                this.showPasswordError = false;
+            }
+            else if (Password.Length < 5 || Password.Length > 30)
             {
                 this.passwordError = "must type password between 5-30 character! ";
                 this.ShowPasswordError = true;
@@ -173,23 +178,25 @@ namespace DeliveryApp.ViewModels
                 this.passwordError = "";
                 this.showPasswordError = false;
             }
+            
+            
         }
         private void ValidateEmail()
         {
             int breakP = 0;
-            if ((!(Email.Contains("@") && Email.EndsWith(".com"))))
+            if ((string.IsNullOrEmpty(Email)))
             {
-                this.emailError = "Email must be typed Correctly ";
-                this.ShowEmailError = true;
+                this.EmailError = "";
+                this.ShowEmailError = false;
             }
-            else if ((string.IsNullOrEmpty(Email)))
+            else if ((!(Email.Contains("@") && Email.EndsWith(".com"))))
             {
-                this.emailError = "must type Email ";
+                this.EmailError = "Email must be typed Correctly ";
                 this.ShowEmailError = true;
             }
             else
             {
-                this.emailError = "";
+                this.EmailError = "";
                 this.ShowEmailError = false;
             }
         }
@@ -239,6 +246,21 @@ namespace DeliveryApp.ViewModels
                     User Current = theApp.CurrentUser;
 
                     bool signUp = await proxy.ChangeCredentialsAsync(Current.Email,Email,Password,Username,Address,CreditCard,PhoneNumber);
+                   
+                    if (Username != null)
+                        Current.Username = Username;
+                    if (Address != null)
+                        Current.Address = Address;
+                    if (PhoneNumber != null)
+                        Current.PhoneNumber = PhoneNumber;
+                    if (CreditCard != null)
+                        Current.CreditCard = CreditCard;
+                    if (Password != null)
+                        Current.Password = Password;
+                    if (email != null)
+                        Current.Email = Email;
+
+                    Current = theApp.CurrentUser;
                     if (signUp)
                         App.Current.MainPage = new TEMPVIEW1();
                     else

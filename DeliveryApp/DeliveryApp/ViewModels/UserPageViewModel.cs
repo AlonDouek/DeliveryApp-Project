@@ -58,11 +58,11 @@ namespace DeliveryApp.ViewModels
 
         public UserPageViewModel()
         {
-           
+            int bp = 0;
             User = ((App)App.Current).CurrentUser;
             CreditCard = User.CreditCard;
             ChangeCredentialCommand = new Command(MoveChangeCredential);
-            LogoutCommand = new Command(Logout);
+            //LogoutCommand = new Command(Logout);
         }
         public async void MoveChangeCredential()
         {
@@ -84,29 +84,33 @@ namespace DeliveryApp.ViewModels
 
             }
         }
-        public async void Logout()
-        {
-            try
-            {
-                DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-                if (User != null)
-                {
-                    App App = (App)Application.Current;
-                    App.NullCurrentUser();
+        #region fff
 
-                    bool signUp = await proxy.LogoutAsync();
+        //public async void Logout()
+        //{
+        //    try
+        //    {
+        //        DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+        //        if (User != null)
+        //        {
+        //            App App = (App)Application.Current;
+        //            App.NullCurrentUser();
 
-                    User a = ((App)App.Current).CurrentUser;
-                    int ssd = 0;
-                    if (signUp)
-                        await App.Current.MainPage.Navigation.PushModalAsync(new Views.LogInPage());
-                }
-            }
-            catch
-            {
-                await App.Current.MainPage.DisplayAlert("error", "that wasnt suppose to happen Hhmmm...", "ok");
-            }
+        //            bool signUp = await proxy.LogoutAsync();
+
+        //            User a = ((App)App.Current).CurrentUser;
+        //            int ssd = 0;
+        //            if (signUp)
+        //                await App.Current.MainPage.Navigation.PushModalAsync(new Views.LogInPage());
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        await App.Current.MainPage.DisplayAlert("error", "that wasnt suppose to happen Hhmmm...", "ok");
+        //    }
             
-        }
+        //}
+
+        #endregion
     }
 }
