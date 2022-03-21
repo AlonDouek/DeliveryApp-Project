@@ -21,12 +21,12 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Grid.Row="0"
-                                   Source="{Binding ImageUrl}"/>
+                                   Source="{Binding Image}"/>
                             <Label Grid.Column="0" Grid.Row="1"
                                    Text="{Binding Name}" 
-                                   FontAttributes="Bold" HorizontalOptions="Center"/>
+                                   FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center"/>
                             <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
-                                   Text="{Binding des}" 
+                                   Text="{Binding Description}" 
                                    FontAttributes="Italic"/>
                         </Grid>
                     </DataTemplate>

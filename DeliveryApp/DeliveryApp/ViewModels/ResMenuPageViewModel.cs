@@ -38,17 +38,27 @@ namespace DeliveryApp.ViewModels
         public ResMenuPageViewModel()
         {
             ResList = new ObservableCollection<Restaurant>();
-            
             CreateResCollection();
         }
         async void CreateResCollection()
         {
-            DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-            List<Restaurant> theRestaurants = await proxy.GetAllRestaurantsAsync();
-            foreach (Restaurant m in theRestaurants)
+            try
             {
-                this.ResList.Add(m);
+                DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+                List<Restaurant> theRestaurants = await proxy.GetAllRestaurantsAsync();
+                foreach (Restaurant m in theRestaurants)
+                {
+
+                    this.ResList.Add(m);
+                    //DOESNT WORK YET? I DONT UNDERSTAND...........
+                }
+                string b = "breakpoint" ;
             }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+           
         }
 
         ////fix =>

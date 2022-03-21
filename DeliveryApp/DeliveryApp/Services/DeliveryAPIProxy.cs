@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.IO;
 using DeliveryApp.DTO;
+using Newtonsoft.Json;
 
 namespace DeliveryApp.Services
 {
@@ -88,7 +89,7 @@ namespace DeliveryApp.Services
                         PropertyNameCaseInsensitive = true
                     };
                     string content = await response.Content.ReadAsStringAsync();
-                    User u = JsonSerializer.Deserialize<User>(content, options);
+                    User u = System.Text.Json.JsonSerializer.Deserialize<User>(content, options);
                     return u;
                 }
                 else
@@ -134,7 +135,7 @@ namespace DeliveryApp.Services
         {
             try
             {
-                string userJson = JsonSerializer.Serialize(user);
+                string userJson = System.Text.Json.JsonSerializer.Serialize(user);
                 StringContent userJsonContent = new StringContent(userJson, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/DeliveryAPI/SignUp", userJsonContent);
                 if (response.IsSuccessStatusCode)
@@ -145,7 +146,7 @@ namespace DeliveryApp.Services
                         PropertyNameCaseInsensitive = true
                     };
                     string content = await response.Content.ReadAsStringAsync();
-                    bool Success = JsonSerializer.Deserialize<bool>(content, options);
+                    bool Success = System.Text.Json.JsonSerializer.Deserialize<bool>(content, options);
                     return Success;
                 }
                 else
@@ -199,19 +200,18 @@ namespace DeliveryApp.Services
                 HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/getRestaurants");
                 if (response.IsSuccessStatusCode)
                 {
-                    JsonSerializerOptions options = new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    };
+                    
                     string Content = await response.Content.ReadAsStringAsync();
-                    List<Restaurant> so = JsonSerializer.Deserialize<List<Restaurant>>(Content, options);
+                    List<Restaurant> so = JsonConvert.DeserializeObject<List<Restaurant>>(Content);
                     foreach (Restaurant m in so)
                     {
                         source.Add(m);
                     }
-                    string g = "j";
-
+                    string g = "breakpoint";
+                    //DOESNT WORK YET?
                     return source;
+
+
                 }
                 else
                 {
