@@ -5,29 +5,27 @@
     <ContentPage.Content>
         <StackLayout>
 
-
-            <CollectionView x:Name="Menu"   ItemsSource="{Binding ResList}" SelectionMode="Single"
-                        SelectionChangedCommand="{Binding SelctionChanged}"
-                        SelectionChangedCommandParameter="{Binding Source={x:Reference ResList}, Path=SelectedItem}">
+            <CollectionView x:Name="Menu" ItemsSource="{Binding ResList}" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid Padding="10" HorizontalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="100" />
+                                <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Grid.Row="0"
-                                   Source="{Binding Image}"/>
-                            <Label Grid.Column="0" Grid.Row="1"
-                                   Text="{Binding Name}" 
-                                   FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center"/>
-                            <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
-                                   Text="{Binding Description}" 
-                                   FontAttributes="Italic"/>
+
+                            <Image Grid.RowSpan="2"
+                               Source="{Binding Image}"
+                               HeightRequest="600"
+                               WidthRequest="600" />
+                            <Label Grid.Column="1"
+                               Text="{Binding Name}"
+                               FontAttributes="Bold" FontSize="Header" />
+                          
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

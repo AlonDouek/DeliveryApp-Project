@@ -194,7 +194,7 @@ namespace DeliveryApp.Services
 
         public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
         {
-            List<Restaurant> source = new List<Restaurant>();
+            //List<Restaurant> source = new List<Restaurant>();
             try
             {
                 HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/getRestaurants");
@@ -203,13 +203,13 @@ namespace DeliveryApp.Services
                     
                     string Content = await response.Content.ReadAsStringAsync();
                     List<Restaurant> so = JsonConvert.DeserializeObject<List<Restaurant>>(Content);
-                    foreach (Restaurant m in so)
-                    {
-                        source.Add(m);
-                    }
-                    string g = "breakpoint";
+                    //foreach (Restaurant m in so)
+                    //{
+                    //    source.Add(m);
+                    //}
+                    //string g = "breakpoint";
                     //DOESNT WORK YET?
-                    return source;
+                    return so;
 
 
                 }

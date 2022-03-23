@@ -21,17 +21,7 @@ namespace DeliveryApp.ViewModels
         }
         #endregion
 
-        //private string email;
-        //public string Email
-        //{
-        //    get { return email; }
-        //    set
-        //    {
-        //        email = value;
-        //        OnPropertyChanged("Email");
-        //    }
-        //}
-
+       
 
         public ObservableCollection<Restaurant> ResList { get; }
 
@@ -48,7 +38,6 @@ namespace DeliveryApp.ViewModels
                 List<Restaurant> theRestaurants = await proxy.GetAllRestaurantsAsync();
                 foreach (Restaurant m in theRestaurants)
                 {
-
                     this.ResList.Add(m);
                     //DOESNT WORK YET? I DONT UNDERSTAND...........
                 }
