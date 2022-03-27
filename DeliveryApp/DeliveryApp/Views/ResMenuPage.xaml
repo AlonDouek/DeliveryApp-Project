@@ -19,21 +19,17 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.RowSpan="2"
-                               Source="{Binding Image}"
-                               HeightRequest="600"
-                               WidthRequest="600" />
+                                Source="{Binding Image}"
+                                HeightRequest="600"
+                                WidthRequest="600" />
                             <Label Grid.Column="1"
                                Text="{Binding Name}"
-                               FontAttributes="Bold" FontSize="Header" />
-                          
+                               FontAttributes="Bold" FontSize="Caption" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            
-            
-           
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
