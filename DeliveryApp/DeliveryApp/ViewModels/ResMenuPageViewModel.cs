@@ -21,9 +21,17 @@ namespace DeliveryApp.ViewModels
         }
         #endregion
 
-       
 
-        public ObservableCollection<Restaurant> ResList { get; }
+        private ObservableCollection<Restaurant> resList;
+        public ObservableCollection<Restaurant> ResList
+        {
+            get => resList;
+            set
+            {
+                resList = value;
+                OnPropertyChanged("ResList");
+            }
+        }
 
         public ResMenuPageViewModel()
         {

@@ -160,6 +160,7 @@ namespace DeliveryApp.ViewModels
             }
                 
         }
+      
 
         public ICommand SubmitCommand { protected set; get; }
         public ICommand Move2SignUp { protected set; get; }

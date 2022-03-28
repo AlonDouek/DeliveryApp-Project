@@ -150,6 +150,30 @@ namespace DeliveryApp.ViewModels
                 OnPropertyChanged("CreditCard");
             }
         }
+        private string creditCardError;
+
+        public string CreditCardError
+        {
+            get => creditCardError;
+            set
+            {
+                creditCardError = value;
+                OnPropertyChanged("CreditCardError");
+            }
+        }
+
+        private bool showCreditCardError;
+
+        public bool ShowCreditCardError
+        {
+            get => showCreditCardError;
+            set
+            {
+                showCreditCardError = value;
+                OnPropertyChanged("ShowCreditCardError");
+            }
+        }
+
         #endregion
         #endregion
 
@@ -199,6 +223,21 @@ namespace DeliveryApp.ViewModels
                 this.showPasswordError = false;
             }
         }
+        private void ValidateCC()
+        {
+
+            if (string.IsNullOrEmpty(CreditCard) || CreditCard.Length != 12)
+            {
+                this.creditCardError = "must type CreditCard with 12 characters!";
+                this.ShowCreditCardError = true;
+            }
+            else
+            {
+                this.creditCardError = "";
+                this.ShowCreditCardError = false;
+            }
+
+        }
         private void ValidateEmail()
         {
             int breakP = 0;
@@ -226,6 +265,8 @@ namespace DeliveryApp.ViewModels
 
             ValidateEmail();
             ValidatePassword();
+            ValidateCC();//YES
+
 
             this.Error += this.EmailError + this.passwordError + ", please check and try again";
             return !((ShowEmailError && ShowPasswordError) || (ShowEmailError || ShowPasswordError));

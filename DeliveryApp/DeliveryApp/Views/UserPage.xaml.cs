@@ -17,10 +17,7 @@ namespace DeliveryApp.Views
             this.BindingContext = new UserPageViewModel();
             InitializeComponent();
         }
-        //private void LogIn(object sender, EventArgs e)
-        //{
-        //    Navigation.PushAsync(new LogInPage());
-        //}
+        
 
         
     }

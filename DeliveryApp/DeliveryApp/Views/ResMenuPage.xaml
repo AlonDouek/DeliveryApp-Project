@@ -4,11 +4,12 @@
              x:Class="DeliveryApp.Views.ResMenuPage">
     <ContentPage.Content>
         <StackLayout>
-
+            <Label Text="hello">
+            </Label>
             <CollectionView x:Name="Menu" ItemsSource="{Binding ResList}" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10" HorizontalOptions="FillAndExpand">
+                        <Grid Padding="10"  >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
@@ -18,13 +19,14 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.RowSpan="2"
+                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
                                 Source="{Binding Image}"
-                                HeightRequest="600"
-                                WidthRequest="600" />
-                            <Label Grid.Column="1"
+                                HeightRequest="6"
+                                WidthRequest="6" />
+                            <!--<Label Text="{Binding Description}" />-->
+                            <Label Grid.Column="2"
                                Text="{Binding Name}"
-                               FontAttributes="Bold" FontSize="Caption" />
+                               FontAttributes="Bold" TextColor="Black" FontSize="Small" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
