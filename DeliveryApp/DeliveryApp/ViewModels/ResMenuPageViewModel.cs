@@ -47,9 +47,8 @@ namespace DeliveryApp.ViewModels
                 foreach (Restaurant m in theRestaurants)
                 {
                     this.ResList.Add(m);
-                    //DOESNT WORK YET? I DONT UNDERSTAND...........
                 }
-                string b = "breakpoint" ;
+
             }
             catch(Exception e)
             {
