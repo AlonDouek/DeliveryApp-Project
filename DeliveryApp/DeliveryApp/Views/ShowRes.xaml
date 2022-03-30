@@ -5,11 +5,15 @@
     <ContentPage.Content>
         <StackLayout>
             <Frame>
-                <Grid>
-                    <Image Source="{}"></Image>
-                    
-                    
-                </Grid>
+                <StackLayout>
+                    <Image Source="{Binding }"></Image>
+                    <Label Text="{Binding }"/> <!--name-->
+                    <BoxView >
+                            <!--opening/closhing times-->
+                    </BoxView>
+                    <Label Text="{Binding }"/> <!--desc-->
+
+                </StackLayout>
             </Frame>
 
             <Label Text="Welcome to Xamarin.Forms!"
