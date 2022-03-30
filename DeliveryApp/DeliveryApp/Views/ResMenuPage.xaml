@@ -2,6 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DeliveryApp.Views.ResMenuPage">
+    <ContentPage.Resources>
+       
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="hello">
@@ -10,32 +13,40 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
-                            <SwipeView.BottomItems>
+                            
+                            <SwipeView.TopItems>
                                 <SwipeItems>
-                                    <SwipeItem Text="{Binding Description}"/>
+                                    <SwipeItem Text="{Binding Description}"/> <!--cant be bothered now fix later-->
                                 </SwipeItems>
-                            </SwipeView.BottomItems>
+                            </SwipeView.TopItems>
+                            <Frame HeightRequest="40">
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="100" />
+                                        <RowDefinition Height="Auto" />
+                                        
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
 
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-
-                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                                    <Image Grid.Row="0" Grid.Column="0"
                                 Source="{Binding Image}"
-                                HeightRequest="6"
-                                WidthRequest="6" />
+                                HeightRequest="100"
+                                WidthRequest="100" 
+                                          />
 
-                                <Label Grid.Column="2"
+                               <Label Grid.Column="1" Grid.Row="0"
                                Text="{Binding Name}"
                                FontAttributes="Bold" TextColor="Black" FontSize="Small" />
-                            </Grid>
-                      
+                                </Grid>
+
+                               
+                            </Frame>
+
                         </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -44,3 +55,12 @@
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+
+    
+    
+    
+    
+    
+    
+    
+    
