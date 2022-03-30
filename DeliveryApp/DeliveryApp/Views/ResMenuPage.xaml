@@ -8,8 +8,53 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="hello">
-            </Label> <!--find a way for selection-->
-            <ListView  x:Name="Menu" ItemsSource="{Binding ResList}" SelectionMode="Single" SelectedItem="{Binding }">
+            </Label>
+            <CollectionView x:Name="Menu" ItemsSource="{Binding ResList}" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.BottomItems>
+                                <SwipeItems>
+                                    <SwipeItem>
+                                        <!--h-->
+                                    </SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.BottomItems>
+                            <Frame HeightRequest="40">
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25" />
+                                        <RowDefinition Height="Auto" />
+                                        
+                                        
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Grid.Row="0" Grid.Column="0"
+                                Source="{Binding Image}"
+                                HeightRequest="55"
+                                WidthRequest="55" 
+                                          />
+
+                               <Label Grid.Column="1" Grid.Row="0"
+                               Text="{Binding Name}" 
+                               FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
+                                </Grid>
+
+                               
+                            </Frame>
+
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <!--<ListView  x:Name="Menu" ItemsSource="{Binding ResList}" SelectionMode="Single" SelectedItem="{Binding SelectCommand}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -23,7 +68,9 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
