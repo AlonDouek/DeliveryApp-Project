@@ -9,25 +9,34 @@
             <CollectionView x:Name="Menu" ItemsSource="{Binding ResList}" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="10"  >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                        <SwipeView>
+                            <SwipeView.BottomItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="{Binding Description}"/>
+                                </SwipeItems>
+                            </SwipeView.BottomItems>
 
-                            <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2"
                                 Source="{Binding Image}"
                                 HeightRequest="6"
                                 WidthRequest="6" />
-                            <!--<Label Text="{Binding Description}" />-->
-                            <Label Grid.Column="2"
+
+                                <Label Grid.Column="2"
                                Text="{Binding Name}"
                                FontAttributes="Bold" TextColor="Black" FontSize="Small" />
-                        </Grid>
+                            </Grid>
+                      
+                        </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
