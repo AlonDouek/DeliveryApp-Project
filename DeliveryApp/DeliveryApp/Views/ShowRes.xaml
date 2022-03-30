@@ -4,6 +4,14 @@
              x:Class="DeliveryApp.Views.ShowRes">
     <ContentPage.Content>
         <StackLayout>
+            <Frame>
+                <Grid>
+                    <Image Source="{}"></Image>
+                    
+                    
+                </Grid>
+            </Frame>
+
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
