@@ -22,9 +22,9 @@ namespace DeliveryApp
         {
             InitializeComponent();
             CurrentUser = null;
-            //MainPage = new NavigationPage(new SignUpPage());//MainPage();
+            MainPage = new NavigationPage(new UserPage());//MainPage();
 
-            MainPage = new NavigationPage(new LogInPage());//MainPage();
+            //MainPage = new NavigationPage(new LogInPage());//MainPage();
         }
         public void NullCurrentUser()
         {

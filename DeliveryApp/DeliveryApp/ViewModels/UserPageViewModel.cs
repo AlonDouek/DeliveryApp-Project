@@ -60,7 +60,8 @@ namespace DeliveryApp.ViewModels
         {
             int bp = 0;
             User = ((App)App.Current).CurrentUser;
-            CreditCard = User.CreditCard;
+            //CreditCard = User.CreditCard;
+            CreditCard = "0000000000000000";
             ChangeCredentialCommand = new Command(MoveChangeCredential);
             LogoutCommand = new Command(Logout);
         }
