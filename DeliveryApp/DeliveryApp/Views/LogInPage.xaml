@@ -29,16 +29,9 @@
                         </StackLayout>
                     </Frame>
 
-                    <!--<Label FontSize="Small" Text="Email" TextColor="Gray"></Label>
-                    <Frame Margin="30,20,30,0" BorderColor="Gray" HeightRequest="40" WidthRequest="60" Padding="0" CornerRadius="6">
-                       <Entry HorizontalOptions="StartAndExpand" Text="{Binding Email}" Placeholder="Enter your Email" ></Entry>
-                    </Frame>
-                    <Label Text="{Binding EmailError}" IsVisible="{Binding ShowEmailError}" TextColor="Red" />
 
-                    <Label FontSize="Small" Text="Password" TextColor="Gray"/>
-                    <Frame CornerRadius="6" BackgroundColor="LightGoldenrodYellow">
-                        <Entry FontSize="Medium" IsPassword="True" Text="{Binding Password}" BackgroundColor="AntiqueWhite" Placeholder="Enter your Password"></Entry>
-                    </Frame>
+                    <!--<Label Text="{Binding EmailError}" IsVisible="{Binding ShowEmailError}" TextColor="Red" />
+
                     <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" TextColor="Red" />-->
 
 
