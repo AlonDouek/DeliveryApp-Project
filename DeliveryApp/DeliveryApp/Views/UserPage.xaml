@@ -42,7 +42,7 @@
                     </Frame>
 
 
-                    <Button Text="change credentials" BackgroundColor="#ADADAD" CornerRadius="11"  Command="{Binding ChangeCredentialCommand}"></Button>
+                    <Button Text="Change Credentials" BackgroundColor="#ADADAD" CornerRadius="11"  Command="{Binding ChangeCredentialCommand}"></Button>
 
                     <Button Text="Log Out" BackgroundColor="#FF6767" CornerRadius="11"  Command="{Binding LogoutCommand}"></Button>
 
