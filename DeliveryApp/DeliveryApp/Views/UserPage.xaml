@@ -13,7 +13,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="Hello, " />
-                                    <Span Text="*{Binding User.Username}" />
+                                    <Span Text="{Binding User.Username}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -24,19 +24,19 @@
                         <StackLayout>
                             <Label Margin="10,10,0,0" FontSize="Small" Text="Email" TextColor="Gray"></Label>
                             <Frame Margin="30,10,30,10" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">
-                                <Label HorizontalOptions="StartAndExpand" Text="*{Binding User.Email}"></Label>
+                                <Label HorizontalOptions="StartAndExpand" Text="{Binding User.Email}"></Label>
                             </Frame>
                             <Label Margin="10,10,0,0" FontSize="Small" Text="PhoneNumber" TextColor="Gray"></Label>
                             <Frame Margin="30,10,30,10" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">
-                                <Label HorizontalOptions="StartAndExpand" Text="*{Binding User.PhoneNumber}"></Label>
+                                <Label HorizontalOptions="StartAndExpand" Text="{Binding User.PhoneNumber}"></Label>
                             </Frame>
                             <Label Margin="10,10,0,0" FontSize="Small" Text="Address" TextColor="Gray"></Label>
                             <Frame Margin="30,10,30,10" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">
-                                <Label HorizontalOptions="StartAndExpand" Text="*{Binding User.Address}"></Label>
+                                <Label HorizontalOptions="StartAndExpand" Text="{Binding User.Address}"></Label>
                             </Frame>
                             <Label Margin="10,10,0,0" FontSize="Small" Text="CreditCard" TextColor="Gray"></Label>
                             <Frame Margin="30,10,30,10" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">
-                                <Label HorizontalOptions="StartAndExpand" Text="*{Binding CreditCard}"></Label>
+                                <Label HorizontalOptions="StartAndExpand" Text="{Binding CreditCard}"></Label>
                             </Frame>
                         </StackLayout>
                     </Frame>
