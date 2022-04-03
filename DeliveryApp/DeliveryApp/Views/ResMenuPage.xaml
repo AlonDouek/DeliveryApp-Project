@@ -2,11 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DeliveryApp.Views.ResMenuPage">
-    <ContentPage.Resources>
-       
-    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#FDDF93">
             <Label Text="hello">
             </Label>
             <CollectionView x:Name="Menu" ItemsSource="{Binding ResList}" >
