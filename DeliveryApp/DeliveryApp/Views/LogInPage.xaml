@@ -70,44 +70,7 @@
                 </StackLayout>
             </ScrollView>
 
-        <!--<ScrollView>
-            <StackLayout Spacing="15" BackgroundColor="White">
-                <Label Margin="20,20,0,0" TextColor="Black" HorizontalOptions="Start"  FontSize="31" FontAttributes="Bold" Text="Login"/>
-                <Frame Margin="30,20,30,0" CornerRadius="11" BorderColor="Gray" HeightRequest="150" WidthRequest="60" Padding="0">
-                    <StackLayout>
-                        <Entry Margin="7,25,20,-53" Placeholder="Email" Text="{Binding Email}" />
-                        <BoxView Margin="1,74,1,10"  HeightRequest="1" Color="Gray"/>
-                        <Entry Margin="7" Placeholder="Password" Text="{Binding Password}" />
-                    </StackLayout>
-                </Frame>
-
-                <Button Margin="37,25,37,10"
-                        HeightRequest="50"
-                        CornerRadius="5"
-                        TextColor="White" 
-                        Text="Log in"
-                        FontSize="16"
-                        BackgroundColor="#FF5353"
-                        Command="{Binding SubmitCommand}"/>
-
-                <Grid Margin="0, 11, 0, 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="45*" />
-                        <RowDefinition Height="10*" />
-                        <RowDefinition Height="45*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="23*" />
-                        <ColumnDefinition Width="10*" />
-                        <ColumnDefinition Width="23*" />
-                    </Grid.ColumnDefinitions>
-
-                    <BoxView Margin="37,0,37,0" Color="Gray" HeightRequest="1.7" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
-                    <Label TranslationY="-3" Text="or" TextColor="Black" FontAttributes="Bold" FontSize="16" Grid.Column="1" BackgroundColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                                   Grid.Row="0" Grid.RowSpan="3" WidthRequest="10" />
-                </Grid>
-            </StackLayout>
-        </ScrollView>-->
+      
 
         </StackLayout>
     </ContentPage.Content>
