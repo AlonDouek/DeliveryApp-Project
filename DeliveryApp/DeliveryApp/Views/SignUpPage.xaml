@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DeliveryApp.Views.SignUpPage">
-    <ContentPage.Content>
-        <StackLayout>
+    <ContentPage.Content>  
+        <StackLayout Spacing="15" BackgroundColor="#FDDF93">
             <ScrollView>
                 <StackLayout>
-                    <Frame BackgroundColor="AliceBlue" >
-                        <Label FontSize="Caption" Text="Sign Up" />
+                    <Frame Margin="10"  Padding="7" BackgroundColor="White" CornerRadius="11">
+                        <Label TextColor="Black" HorizontalOptions="Center"  
+                           FontSize="30" FontAttributes="Bold" Text="Sign up"/>
                     </Frame>
+                    
                     <Grid BackgroundColor="Ivory"> 
 
                         <Label FontSize="Small" Text="Email" Grid.Column="0" Grid.Row="0" TextColor="Gray"/>
