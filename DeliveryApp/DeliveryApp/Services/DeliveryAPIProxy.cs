@@ -103,34 +103,7 @@ namespace DeliveryApp.Services
                 return null;
             }
         }
-        #region brrrrrrrrr
-        //public async Task<User> SignUpAsync(User u)
-        //{
-        //    try
-        //    {
-        //        HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/SignUp?Username={u.Username}&Password={u.Password}&Email={u.Email}&Address={u.Address}&PhoneNumber={u.PhoneNumber}&CreditCard={u.CreditCard}");
-        //        if (response.IsSuccessStatusCode)
-        //        {
-        //            JsonSerializerOptions options = new JsonSerializerOptions
-        //            {
-        //                PropertyNameCaseInsensitive = true
-        //            };
-        //            string content = await response.Content.ReadAsStringAsync();
-        //            User p = JsonSerializer.Deserialize<User>(content, options);
-        //            return p;
-        //        }
-        //        else
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.Message);
-        //        return null;
-        //    }
-        //}
-        #endregion
+        
         public async Task<bool> SignUpAsync(User user)
         {
             try
@@ -173,26 +146,9 @@ namespace DeliveryApp.Services
 
         }
 
-        #region fff
-        //public async Task<bool> LogoutAsync()
-        //{
-        //    try
-        //    {
-        //        string url = Uri.EscapeUriString($"{this.baseUri}/DeliveryAPI/Logout");
-        //        HttpResponseMessage response = await this.client.GetAsync(url);
-        //        return response.IsSuccessStatusCode;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return false;
-        //    }
+        
 
-
-        //}
-        #endregion
-
-
-        public async Task<List<Restaurant>> GetAllRestaurantsAsync()///FINISH
+        public async Task<List<Restaurant>> GetAllRestaurantsAsync()
         {
             //List<Restaurant> source = new List<Restaurant>();
             try
@@ -217,7 +173,30 @@ namespace DeliveryApp.Services
             }
         }
 
-        
-        
+        public async Task<List<Models.Menu>> GetAllMenusAsync()
+        {
+            //List<Restaurant> source = new List<Restaurant>();
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/getMenus");
+                if (response.IsSuccessStatusCode)
+                {
+                    string Content = await response.Content.ReadAsStringAsync();
+                    List<Models.Menu> so = JsonConvert.DeserializeObject<List<Models.Menu>>(Content);
+
+                    return so;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
     }
 }
