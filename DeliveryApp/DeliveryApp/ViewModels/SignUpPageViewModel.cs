@@ -265,7 +265,7 @@ namespace DeliveryApp.ViewModels
 
             ValidateEmail();
             ValidatePassword();
-            ValidateCC();//YES
+            ValidateCC();
 
 
             this.Error += this.EmailError + this.passwordError + ", please check and try again";

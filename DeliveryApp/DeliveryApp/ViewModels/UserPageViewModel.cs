@@ -97,11 +97,6 @@ namespace DeliveryApp.ViewModels
                     App App = (App)Application.Current;
                     App.NullCurrentUser();
 
-                    //bool sp = await proxy.LogoutAsync();
-
-                    //User a = ((App)App.Current).CurrentUser;
-                    //int ssd = 0;
-                    
                     await App.Current.MainPage.Navigation.PushModalAsync(new Views.LogInPage());
                 }
             }

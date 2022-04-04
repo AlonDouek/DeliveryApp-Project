@@ -85,7 +85,7 @@ namespace DeliveryApp.Services
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
                     {
-                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        ReferenceHandler = ReferenceHandler.Preserve,
                         PropertyNameCaseInsensitive = true
                     };
                     string content = await response.Content.ReadAsStringAsync();
@@ -115,7 +115,7 @@ namespace DeliveryApp.Services
                 {
                     JsonSerializerOptions options = new JsonSerializerOptions
                     {
-                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        ReferenceHandler = ReferenceHandler.Preserve, 
                         PropertyNameCaseInsensitive = true
                     };
                     string content = await response.Content.ReadAsStringAsync();
@@ -150,7 +150,6 @@ namespace DeliveryApp.Services
 
         public async Task<List<Restaurant>> GetAllRestaurantsAsync()
         {
-            //List<Restaurant> source = new List<Restaurant>();
             try
             {
                 HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/getRestaurants");
@@ -175,7 +174,6 @@ namespace DeliveryApp.Services
 
         public async Task<List<Models.Menu>> GetAllMenusAsync()
         {
-            //List<Restaurant> source = new List<Restaurant>();
             try
             {
                 HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/getMenus");

@@ -12,14 +12,6 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                         
-                                <!--<SwipeView.BottomItems>
-                                   <SwipeItems>
-                                       <SwipeItem>
-                                           --><!--h--><!--
-                                       </SwipeItem>
-                                   </SwipeItems>
-                                </SwipeView.BottomItems>-->
-                           
                                 <Grid Padding="1">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />

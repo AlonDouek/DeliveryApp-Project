@@ -259,6 +259,7 @@ namespace DeliveryApp.ViewModels
                         Current.Password = Password;
                     if (email != null)
                         Current.Email = Email;
+                    
 
                     Current = theApp.CurrentUser;
                     if (signUp)
