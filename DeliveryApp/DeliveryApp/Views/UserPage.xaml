@@ -20,7 +20,7 @@
                     </Frame>
 
 
-                    <Frame Margin="5,15,5,0" CornerRadius="11" BorderColor="Gray" Padding="0">
+                    <Frame Margin="10,15,10,0" CornerRadius="11" BorderColor="Gray" Padding="0">
                         <StackLayout>
                             <Label Margin="10,10,0,0" FontSize="Small" Text="Email" TextColor="Gray"></Label>
                             <Frame Margin="30,10,30,10" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">

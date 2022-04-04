@@ -3,54 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DeliveryApp.Views.ResMenuPage">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#FDDF93">
-            <Label Text="hello">
-            </Label>
-            <CollectionView x:Name="Menu" ItemsSource="{Binding ResList}" >
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <SwipeView>
-                            <SwipeView.BottomItems>
-                                <SwipeItems>
-                                    <SwipeItem>
-                                        <!--h-->
-                                    </SwipeItem>
-                                </SwipeItems>
-                            </SwipeView.BottomItems>
-                            <Frame HeightRequest="40">
-                                <Grid Padding="10">
+        <StackLayout Spacing="15" BackgroundColor="#FDDF93">
+
+            <SwipeView>
+                
+                <Frame Margin="30,10,30,10" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">
+                    <CollectionView x:Name="Menu" ItemsSource="{Binding ResList}" >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                        
+                                <!--<SwipeView.BottomItems>
+                                   <SwipeItems>
+                                       <SwipeItem>
+                                           --><!--h--><!--
+                                       </SwipeItem>
+                                   </SwipeItems>
+                                </SwipeView.BottomItems>-->
+                           
+                                <Grid Padding="1">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="25" />
-                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
                                         
                                         
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
                                         
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Row="0" Grid.Column="0"
-                                Source="{Binding Image}"
-                                HeightRequest="55"
-                                WidthRequest="55" 
-                                          />
+                                    <Image Grid.Row="0" Grid.Column="0" 
+                                        Source="{Binding Image}" HorizontalOptions="Start" Aspect="AspectFit" HeightRequest="50" WidthRequest="50" />
 
-                               <Label Grid.Column="1" Grid.Row="0"
-                               Text="{Binding Name}" 
-                               FontAttributes="Bold" TextColor="Black" FontSize="Medium" />
+                                    <Label Grid.Column="1" Grid.Row="0" 
+                                        Text="{Binding Name}" FontSize="12"
+                                        FontAttributes="Bold" TextColor="Black"  />
+                                
                                 </Grid>
 
-                               
-                            </Frame>
+                            
+                           
 
-                        </SwipeView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-
+                            
+                        
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+            </SwipeView>
             <!--<ListView  x:Name="Menu" ItemsSource="{Binding ResList}" SelectionMode="Single" SelectedItem="{Binding SelectCommand}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
