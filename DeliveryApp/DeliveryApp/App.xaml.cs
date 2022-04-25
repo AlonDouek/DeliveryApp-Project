@@ -17,11 +17,14 @@ namespace DeliveryApp
         }
         //The current logged in user
         public User CurrentUser { get; set; }
+        //The current user's order
+        public Order CurrentOrder { get; set; }
 
         public App()
         {
             InitializeComponent();
             CurrentUser = null;
+            CurrentOrder = null;
             //MainPage = new NavigationPage(new UserPage());//MainPage();
 
             MainPage = new NavigationPage(new LogInPage());//MainPage();

@@ -57,27 +57,27 @@ namespace DeliveryApp.ViewModels
            
         }
 
-        ////fix =>
-        //public ICommand SelctionChanged => new Command<Object>(OnSelectionChanged);
-        //public void OnSelectionChanged(Object obj)
-        //{
-        //    if (obj is Restaurant)
-        //    {
-        //        Restaurant choice = (Restaurant)obj;
-        //        Page resPage = new ShowRes();
-        //        ShowResViewModel Context = new ShowResViewModel
-        //        {
-        //            Name = choice.Name,
-        //            Description = choice.Description,
-        //            OpeningHours  = choice.OpeningHours,
-        //            ClosingHours = choice.ClosingHours
-        //        };
-        //        //resPage.BindingContext = Context;
-        //        //resPage.Title = Context.Name;
-        //        //if (NavigateToPageEvent != null)
-        //        //    NavigateToPageEvent(resPage);
-        //    }
-        //}
+        //fix =>
+        public ICommand SelctionChanged => new Command<Object>(OnSelectionChanged);
+        public void OnSelectionChanged(Object obj)
+        {
+            if (obj is Restaurant)
+            {
+                Restaurant choice = (Restaurant)obj;
+                Page resPage = new ShowRes();
+                showResViewModel Context = new showResViewModel
+                {
+                    Name = choice.Name,
+                    Description = choice.Description,
+                    OpeningHours = choice.OpeningHours,
+                    ClosingHours = choice.ClosingHours
+                };
+                resPage.BindingContext = Context;
+                resPage.Title = Context.Name;
+                if (NavigateToPageEvent != null)
+                    NavigateToPageEvent(resPage);
+            }
+        }
 
 
 

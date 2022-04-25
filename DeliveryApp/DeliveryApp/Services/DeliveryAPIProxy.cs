@@ -196,5 +196,28 @@ namespace DeliveryApp.Services
             }
         }
 
+        public async Task<Models.Menu> GetMenuAsync(string name)
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/getMenuByRes?Name={name}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string Content = await response.Content.ReadAsStringAsync();
+                    Models.Menu so = JsonConvert.DeserializeObject<Models.Menu>(Content);
+
+                    return so;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
     }
 }

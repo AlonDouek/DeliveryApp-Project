@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Text;
 using DeliveryApp.Models;
 using System.Collections.ObjectModel;
+using DeliveryApp.Services;
 
 namespace DeliveryApp.ViewModels
 {
@@ -87,12 +88,39 @@ namespace DeliveryApp.ViewModels
 
         #endregion
             
-        public ObservableCollection<Menu> menuList { get; }    
-            
-        public showResViewModel()
+        
+
+
+        private Menu menuList;
+        public Menu MenuList
         {
-            
+            get => menuList;
+            set
+            {
+                menuList = value;
+                OnPropertyChanged("MenuList");
+            }
         }
 
+        public showResViewModel()
+        {
+            MenuList = new Menu();
+            CreateMenu();
+        }
+        async void CreateMenu()
+        {
+
+            try
+            {
+                DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+                MenuList = await proxy.GetMenuAsync(Name);
+                
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
     }
 }

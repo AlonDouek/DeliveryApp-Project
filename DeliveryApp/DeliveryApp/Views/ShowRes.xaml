@@ -8,9 +8,7 @@
                 <StackLayout>
                     <Image Source="{Binding }"></Image>
                     <Label Text="{Binding }"/> <!--name-->
-                    <BoxView >
-                            <!--opening/closhing times-->
-                    </BoxView>
+                    
                     <Label Text="{Binding }"/> <!--desc-->
 
                 </StackLayout>
@@ -19,6 +17,101 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <ScrollView>
+                <StackLayout Spacing="15" BackgroundColor="#FDDF93">
+
+                    <Frame Margin="10"  Padding="7" BackgroundColor="White" CornerRadius="11">
+                        <Label TextColor="Black" HorizontalOptions="Center"  
+                           FontSize="30" FontAttributes="Bold" Text="{Binding Name}"/>
+                    </Frame>
+
+                    <Frame Margin="10,15,10,0" CornerRadius="11" BorderColor="Gray" Padding="0">
+                        <StackLayout>
+                            <Label Margin="10,10,0,0" FontSize="Small" Text="Opening Hours" TextColor="Gray"></Label>
+                            <Frame Margin="30,10,30,0" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">
+                                <Label HorizontalOptions="StartAndExpand" Text="{Binding OpeningHours}"></Label>
+                            </Frame>
+                            <Label Margin="10,10,0,0" FontSize="Small" Text="closing hours" TextColor="Gray"></Label>
+                            <Frame Margin="30,10,30,20" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">
+                                <Label HorizontalOptions="StartAndExpand" Text="{Binding ClosingHours}" ></Label>
+                            </Frame>
+                            <Label Margin="10,10,0,0" FontSize="Small" Text="{Binding Description}" TextColor="Gray"> </Label>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="10,15,10,0" CornerRadius="11" BorderColor="Gray" Padding="0">
+                        <StackLayout>
+                            <SwipeView>
+                                <CollectionView x:Name="Menu" ItemsSource="{Binding ResList}" >
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid Padding="1">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
+
+
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+
+                                                </Grid.ColumnDefinitions>
+
+                                                    <Image Grid.Row="0" Grid.Column="0" 
+                                                        Source="{Binding Image}" HorizontalOptions="Start" Aspect="AspectFit" HeightRequest="50" WidthRequest="50" />
+
+                                                    <Label Grid.Column="1" Grid.Row="0" 
+                                                       Text="{Binding Name}" FontSize="12"
+                                                       FontAttributes="Bold" TextColor="Black"  />
+ 
+                                            </Grid>
+
+
+
+
+
+
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                
+                            </SwipeView>
+                        </StackLayout>
+                    </Frame>
+
+
+
+
+                    <Button BackgroundColor="#6CF38C" CornerRadius="11" Text="Submit" x:Name="SUBMIT" Command="{Binding SubmitCommand}"></Button>
+
+                    <Grid Margin="0, 5, 0, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45*" />
+                            <RowDefinition Height="10*" />
+                            <RowDefinition Height="45*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="23*" />
+                            <ColumnDefinition Width="10*" />
+                            <ColumnDefinition Width="23*" />
+                        </Grid.ColumnDefinitions>
+
+                        <BoxView Margin="37,0,37,0" Color="Gray" HeightRequest="1.7" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
+                        <Label TranslationY="-3" Text="or" TextColor="Black" FontAttributes="Bold" FontSize="16" Grid.Column="1"  BackgroundColor="#FDDF93" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                   Grid.Row="0" Grid.RowSpan="3" WidthRequest="10" />
+                    </Grid>
+                    <!--<Label Text="OR" FontSize="Large"  HorizontalOptions="Center" />-->
+                    <!--<Button BackgroundColor="#DC0E0E" Text="forgot password?" x:Name="forpass"></Button> Clicked="SignUp"-->
+                    <Button BackgroundColor="#6CF38C" CornerRadius="11" Text="Don't have an account? Sign up" Command="{Binding Move2SignUp}" />
+
+
+
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
