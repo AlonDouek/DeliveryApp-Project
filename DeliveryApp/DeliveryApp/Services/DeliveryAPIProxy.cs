@@ -219,5 +219,30 @@ namespace DeliveryApp.Services
                 return null;
             }
         }
+        public async Task<List<Models.MenuItem>> GetItemsByMenuIDAsync(int MenuID)
+        {
+            try//change to right one
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/GetItemsByMenuID?MenuID={MenuID}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string Content = await response.Content.ReadAsStringAsync();
+                    List<Models.MenuItem> so = JsonConvert.DeserializeObject<List<Models.MenuItem>>(Content);
+
+                    return so;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        
     }
 }

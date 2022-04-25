@@ -87,9 +87,18 @@ namespace DeliveryApp.ViewModels
 
 
         #endregion
-            
-        
 
+
+        private ObservableCollection<MenuItem> menuItemList;
+        public ObservableCollection<MenuItem> MenuItemList
+        {
+            get => menuItemList;
+            set
+            {
+                menuItemList = value;
+                OnPropertyChanged("MenuItemList");
+            }
+        }
 
         private Menu menuList;
         public Menu MenuList
@@ -106,6 +115,8 @@ namespace DeliveryApp.ViewModels
         {
             MenuList = new Menu();
             CreateMenu();
+            MenuItemList = new ObservableCollection<MenuItem>();
+            addMenuItem();
         }
         async void CreateMenu()
         {
@@ -115,6 +126,25 @@ namespace DeliveryApp.ViewModels
                 DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
                 MenuList = await proxy.GetMenuAsync(Name);
                 
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+        }
+
+        async void addMenuItem()
+        {
+            try
+            {
+                DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+                List<MenuItem> theMenuItems = await proxy.GetItemsByMenuIDAsync(MenuList.MenuId);
+                foreach (MenuItem m in theMenuItems)
+                {
+                    this.MenuItemList.Add(m);
+                }
+
             }
             catch (Exception e)
             {
