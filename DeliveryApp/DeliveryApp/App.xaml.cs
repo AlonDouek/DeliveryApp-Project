@@ -26,8 +26,8 @@ namespace DeliveryApp
             CurrentUser = null;
             CurrentOrder = null;
             //MainPage = new NavigationPage(new UserPage());//MainPage();
-
-            MainPage = new NavigationPage(new LogInPage());//MainPage();
+            MainPage = new NavigationPage(new HomeMenuPage());//MainPage();
+            //MainPage = new NavigationPage(new LogInPage());//MainPage();
         }
         public void NullCurrentUser()
         {

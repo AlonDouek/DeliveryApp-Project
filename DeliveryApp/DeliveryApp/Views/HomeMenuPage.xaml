@@ -4,9 +4,38 @@
              x:Class="DeliveryApp.Views.HomeMenuPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ScrollView>
+                <StackLayout Spacing="15" BackgroundColor="#FDDF93">
+
+                        <Frame Margin="10"  Padding="7" BackgroundColor="White" CornerRadius="11">
+                            <Label  TextColor="Black" HorizontalOptions="Center"  Text="Menu"
+                           FontSize="30" FontAttributes="Bold">
+                                
+                            </Label>
+                        </Frame>
+
+
+                    <Frame Margin="10,15,10,0" CornerRadius="11" BorderColor="Gray" Padding="0">
+                        <Grid>
+                
+                            <Button Grid.Row="0" Grid.Column="0" Margin="30,10,30,10" HeightRequest="40" WidthRequest="50" Padding="1" BorderColor="DimGray" Text="Log Out" BackgroundColor="#FF6767" CornerRadius="11" Command="{Binding LogoutCommand}"></Button>
+                            <Button Grid.Row="0" Grid.Column="1" Margin="30,10,30,10" HeightRequest="40" WidthRequest="50" Padding="1" BorderColor="DimGray" Text="dsadsa2" BackgroundColor="#FF6767" CornerRadius="11" Command="{Binding LogoutCommand}"></Button>
+                            <Button Grid.Row="0" Grid.Column="2" Margin="30,10,30,10" HeightRequest="40" WidthRequest="50" Padding="1" BorderColor="DimGray" Text="dsgdsg3" BackgroundColor="#FF6767" CornerRadius="11" Command="{Binding LogoutCommand}"></Button>
+                        </Grid>
+                        </Frame>
+
+
+                        <Button Text="Change Credentials" BackgroundColor="#ADADAD" CornerRadius="11"  Command="{Binding ChangeCredentialCommand}"></Button>
+
+                        
+
+
+                    </StackLayout>
+
+
+            </ScrollView>
         </StackLayout>
+        
     </ContentPage.Content>
+    
 </ContentPage>
