@@ -4,15 +4,15 @@
              x:Class="DeliveryApp.Views.ShowRes">
     <ContentPage.Content>
         <StackLayout>
-            <Frame>
+            <!--<Frame>
                 <StackLayout>
                     <Image Source="{Binding }"></Image>
-                    <Label Text="{Binding }"/> <!--name-->
+                    <Label Text="{Binding }"/> --><!--name--><!--
                     
-                    <Label Text="{Binding }"/> <!--desc-->
+                    <Label Text="{Binding }"/> --><!--desc--><!--
 
                 </StackLayout>
-            </Frame>
+            </Frame>-->
 
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
@@ -23,20 +23,20 @@
 
                     <Frame Margin="10"  Padding="7" BackgroundColor="White" CornerRadius="11">
                         <Label TextColor="Black" HorizontalOptions="Center"  
-                           FontSize="30" FontAttributes="Bold" Text="9{Binding Name}"/>
+                           FontSize="30" FontAttributes="Bold" Text="{Binding Name}"/>
                     </Frame>
 
                     <Frame Margin="10,15,10,0" CornerRadius="11" BorderColor="Gray" Padding="0">
                         <StackLayout>
                             <Label Margin="10,10,0,0" FontSize="Small" Text="Opening Hours" TextColor="Gray"></Label>
                             <Frame Margin="30,10,30,0" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">
-                                <Label HorizontalOptions="StartAndExpand" Text="9{Binding OpeningHours}"></Label>
+                                <Label HorizontalOptions="StartAndExpand" Text="{Binding OpeningHours}"></Label>
                             </Frame>
                             <Label Margin="10,10,0,0" FontSize="Small" Text="closing hours" TextColor="Gray"></Label>
                             <Frame Margin="30,10,30,20" BorderColor="Gray" HeightRequest="40" WidthRequest="80" Padding="1" CornerRadius="6">
-                                <Label HorizontalOptions="StartAndExpand" Text="9{Binding ClosingHours}" ></Label>
+                                <Label HorizontalOptions="StartAndExpand" Text="{Binding ClosingHours}" ></Label>
                             </Frame>
-                            <Label Margin="10,10,0,0" FontSize="Small" Text="9{Binding Description}" TextColor="Gray"> </Label>
+                            <Label Margin="10,10,0,0" FontSize="Small" Text="{Binding Description}" TextColor="Gray"> </Label>
 
                         </StackLayout>
                     </Frame>
@@ -44,7 +44,7 @@
                     <Frame Margin="10,15,10,0" CornerRadius="11" BorderColor="Gray" Padding="0">
                         <StackLayout>
                             <SwipeView>
-                                <CollectionView x:Name="Menu" ItemsSource="{Binding MenuList.}" >
+                                <!--<CollectionView x:Name="Menu" ItemsSource="{Binding MenuItemList}" >
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
 
@@ -77,8 +77,8 @@
 
                                             </DataTemplate>
                                         </CollectionView.ItemTemplate>
-                                    </CollectionView>
-                                
+                                    </CollectionView>-->
+                                  <Label FontSize="Large" Text="f"></Label>
                             </SwipeView>
                         </StackLayout>
                     </Frame>

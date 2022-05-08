@@ -22,6 +22,22 @@ namespace DeliveryApp.ViewModels
 
         #region props
 
+        #region ID
+
+        private int id;
+
+        public int Id
+        {
+            get => id;
+            set
+            {
+                id = value;
+                OnPropertyChanged("Id");
+            }
+        }
+
+        #endregion
+
         #region Name
 
         private string name;
@@ -85,6 +101,18 @@ namespace DeliveryApp.ViewModels
 
         #endregion
 
+        private Menu menu1;
+
+        public Menu Menu1
+        {
+            get => menu1;
+            set
+            {
+                menu1 = value;
+                OnPropertyChanged("Menu1");
+            }
+        }
+
 
         #endregion
 
@@ -114,17 +142,17 @@ namespace DeliveryApp.ViewModels
         public showResViewModel()
         {
             MenuList = new Menu();
-            CreateMenu();
+            //CreateMenu();
             MenuItemList = new ObservableCollection<MenuItem>();
-            addMenuItem();
+            //addMenuItem();
         }
-        async void CreateMenu()
+        public async void CreateMenu()
         {
 
             try
             {
                 DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
-                MenuList = await proxy.GetMenuAsync(Name);
+                MenuList = await proxy.GetMenuAsync(Id);
                 
             }
             catch (Exception e)
@@ -134,7 +162,7 @@ namespace DeliveryApp.ViewModels
 
         }
 
-        async void addMenuItem()
+        public async void addMenuItem()
         {
             try
             {

@@ -196,11 +196,11 @@ namespace DeliveryApp.Services
             }
         }
 
-        public async Task<Models.Menu> GetMenuAsync(string name)
+        public async Task<Models.Menu> GetMenuAsync(int id)
         {
             try
             {
-                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/getMenuByRes?Name={name}");
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/DeliveryAPI/getMenuByRes?ID={id}");
                 if (response.IsSuccessStatusCode)
                 {
                     string Content = await response.Content.ReadAsStringAsync();

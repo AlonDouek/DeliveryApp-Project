@@ -23,7 +23,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
+                                        
                                         
                                     </Grid.ColumnDefinitions>
 
@@ -46,23 +46,7 @@
                     </CollectionView>
                 </Frame>
             </SwipeView>
-            <!--<ListView  x:Name="Menu" ItemsSource="{Binding ResList}" SelectionMode="Single" SelectedItem="{Binding SelectCommand}" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                                <Image Source="{Binding Image}" HorizontalOptions="Start" AbsoluteLayout.LayoutBounds="250.25, 0.25, 50, 50 "/>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text = "{Binding Name}" FontSize="12" AbsoluteLayout.LayoutBounds="0.25, 0.25, 400, 40"/>
-                                    <Label Text = "{Binding Description}" AbsoluteLayout.LayoutBounds="50, 35, 200, 25"/>
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
-            
-            
+     
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

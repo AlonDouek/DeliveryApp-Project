@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Menu = DeliveryApp.Models.Menu;
 
 namespace DeliveryApp.ViewModels
 {
@@ -21,6 +22,16 @@ namespace DeliveryApp.ViewModels
         }
         #endregion
 
+        private Menu meno;
+        public Menu Meno
+        {
+            get => meno;
+            set
+            {
+                meno = value;
+                OnPropertyChanged("Meno");
+            }
+        }
 
         private ObservableCollection<Restaurant> resList;
         public ObservableCollection<Restaurant> ResList
@@ -37,6 +48,7 @@ namespace DeliveryApp.ViewModels
         {
             ResList = new ObservableCollection<Restaurant>();
             CreateResCollection();
+            
         }
         async void CreateResCollection()
         {
@@ -56,7 +68,21 @@ namespace DeliveryApp.ViewModels
             }
            
         }
+        public async void CreateMenu(Restaurant m)
+        {
+            try
+            {
+                DeliveryAPIProxy proxy = DeliveryAPIProxy.CreateProxy();
+                Meno = await proxy.GetMenuAsync(m.RestaurantId);
+                
+               // Menu = await proxy.GetMenuAsync(Name);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
+        }
         //fix =>
         public ICommand SelctionChanged => new Command<Object>(OnSelectionChanged);
         public void OnSelectionChanged(Object obj)
@@ -64,28 +90,27 @@ namespace DeliveryApp.ViewModels
             if (obj is Restaurant)
             {
                 Restaurant choice = (Restaurant)obj;
+                this.CreateMenu(choice);
                 Page resPage = new ShowRes();
+               
                 showResViewModel Context = new showResViewModel
                 {
+                    Id = choice.RestaurantId,
                     Name = choice.Name,
                     Description = choice.Description,
                     OpeningHours = choice.OpeningHours,
-                    ClosingHours = choice.ClosingHours
+                    ClosingHours = choice.ClosingHours,
+                    Menu1 = Meno
                 };
+                Context.addMenuItem();
                 resPage.BindingContext = Context;
                 resPage.Title = Context.Name;
-                if (NavigateToPageEvent != null)
-                    NavigateToPageEvent(resPage);
+                
+                App.Current.MainPage = resPage;
             }
         }
 
 
-
-        #region Events
-        //Events
-        //This event is used to navigate to the monkey page
-        public Action<Page> NavigateToPageEvent;
-        #endregion
 
     }
 }
